@@ -14,6 +14,7 @@
 - `AGENTS.md`、`REQUIREMENTS.md`、`DESIGN.md` 和 `README.md` 默认使用中文书写；除非用户特别说明，或术语、代码符号、专有名词本身应使用英文。
 - `agent-template/` 中的 `README.md`、`REQUIREMENTS.md`、`DESIGN.md` 和 `agent-log/` 日志模板只保留演示内容；具体撰写规则统一以本 `AGENTS.md` 为准，阅读时需要注意分辨规则和示例的差异。
 - 上述创建的文件的文件名必须全大写，其中AGENTS和REQUIREMENTS需要复数，即使用户临时写成小写或单数，也应该注意到该统一标准（除非用户数明确要求修改）。
+- 由于本template也经由git管理，所以目录下会存在.git等相关文件，所有实际仓库在使用时，应该先删除agent-template下的git相关资产，移除其git仓库特征，避免上层仓库管理问题。
 
 ### 1. 每次任务开始前
 
@@ -94,6 +95,7 @@
 - 如果项目没有 UI 或视觉界面，`DESIGN.md` 可只记录“不适用”和原因。
 - 如果仓库中已有旧名 `DESIGNS.md` 且内容其实是系统/架构说明，后续整理时应迁移：系统/仓库/应用说明进入 `README.md`，视觉规范进入 `DESIGN.md`，具体需求进入 `REQUIREMENTS.md`。
 - 如果项目的设计风格发生了大幅度、颠覆性的改变，应该将老版本的内容创建为一个DESIGN-yyyymmddhhmmss.md的文件，保存到根目录/archive/design/的地址，如果改地址不存在，创建。
+- 针对更复杂的、存在“内容”和“系统”的项目，应当在agent-log下再创建2个文件夹，分别为agent-log/system和agent-log/content。每次实际执行任务时，应该针对性的记录log而非总是都记录。内容和系统改动任务的分类由ai自行判断，通常来说，web系统的数据、游戏的装备数值和技能等属于内容更新。
 
 ### 6. 父子文档关系
 
@@ -167,3 +169,4 @@
 - 架构限制：
 - 授权与引用边界：
 - 安全、隐私或合规要求：
+
