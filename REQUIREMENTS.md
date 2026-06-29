@@ -2,13 +2,13 @@
 
 本文件是演示内容。复制到项目后，用真实需求替换示例。
 
-撰写规则见 `AGENTS.md`。真正的任务记录内容统一放在 `# 任务清单` 下；二级标题使用 Phase；三级标题使用 `branch-name：feature description`，其中 `branch-name` 对应相关 branch/worktree，`feature description` 描述该 branch 下用户可感知的完整 feature 或工作主题。`DOC`、`PM`、`FE` 等是 task ID 中的任务分类，不写入 feature 标题。
+撰写规则见 `AGENTS.md`。真正的任务记录内容统一放在 `# 任务清单` 下；二级标题使用 Phase；三级标题使用 `branch-name: feature description`，其中 `branch-name` 对应相关 branch/worktree，`feature description` 描述该 branch 下用户可感知的完整 feature 或工作主题。`DOC`、`PM`、`FE` 等是 task ID 中的任务分类，不写入 feature 标题。
 
 # 任务清单
 
 ## Phase - v0.1.0 - 基础整理
 
-### template/main：提供可复制的项目协作模板
+### template/main: 提供可复制的项目协作模板
 
 - [ ] \[0.1.0-DOC-A-000] 建立项目协作基础 #epic #docs #P0
   - [ ] \[0.1.0-DOC-A-001] 创建根目录 `AGENTS.md`
@@ -31,7 +31,7 @@
     - [ ] 放入日志模板演示文件
     - [ ] 每次任务完成时新增一条日志
 
-### template/main：提供项目基础规划模板
+### template/main: 提供项目基础规划模板
 
 - [ ] \[0.1.0-PM-A-000] 定义项目基础 #epic #P0
   - [ ] \[0.1.0-PM-A-001] 定义项目目标
@@ -53,7 +53,7 @@
 
 ## Phase - v0.2.0 - 第一个可用流程
 
-### template/main：提供首个可用流程需求模板
+### template/main: 提供首个可用流程需求模板
 
 - [ ] \[0.2.0-FE-A-000] 实现第一个可用流程 #feature #P0
   - [ ] \[0.2.0-DATA-A-001] 创建主要数据模型或内容结构
@@ -77,16 +77,16 @@
 
 ## Phase - v0.3.0 - 持续协作约束
 
-### template/main：提供 AI 协作追踪流程
+### template/main: 提供 AI 协作追踪流程
 
 - [ ] \[0.3.0-QA-A-000] 保持 AI 协作可追踪 #qa #P0
-  - [ ] \[0.3.0-QA-A-001] 每次任务开始前执行 `git pull`
+  - [ ] \[0.3.0-QA-A-001] 每次任务开始前执行 Git 同步预检
   - [ ] \[0.3.0-QA-A-002] 每次任务开始前检查 `REQUIREMENTS.md` 是否已有匹配需求
   - [ ] \[0.3.0-QA-A-003] 每次任务完成后更新已完成需求的 checkbox
   - [ ] \[0.3.0-QA-A-004] 每次任务执行创建一条 `agent-log/` 日志
   - [ ] \[0.3.0-QA-A-005] 日志包含用户原始 prompt、启动运行时分支和版本、开始时间、结束时间、对话与行动记录、需求更新、设计更新和验证记录
 
-### template/main：提供任务完成标准
+### template/main: 提供任务完成标准
 
 - [ ] \[0.3.0-QA-B-000] 满足任务完成定义 #qa #P0
   - [ ] \[0.3.0-QA-B-001] 用户请求的行为、内容或文档已经完成
@@ -96,6 +96,6 @@
 
 ## Phase - v0.4.0 - Backlog 待整理
 
-### template/main：提供后续需求整理入口
+### template/main: 提供后续需求整理入口
 
 - [ ] \[0.4.0-PM-A-001] 用真实项目需求替换模板 Backlog #P2
