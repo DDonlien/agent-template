@@ -197,14 +197,14 @@
 
 ### 9. Worktree 工作目录模式
 
-- 对于使用 Git worktree 的项目，推荐采用“项目容器目录不直接开发，主仓库只保存 Git 元数据，所有分支都在 `worktrees/` 下开发”的目录结构：
+- 对于使用 Git worktree 的项目，推荐采用“项目容器目录不直接开发，主仓库只保存 Git 元数据，所有分支都在 `worktree/` 下开发”的目录结构：
 
 ```text
 <project-name>/
 ├── .repo/                 ← 主仓库目录，仅用于保存和管理 `.git`，不作为日常开发工作区
 │   └── .git/
 │
-└── worktrees/
+└── worktree/
     ├── main/              ← main 分支的实际工作区
     │   ├── ios/
     │   ├── web/
@@ -216,12 +216,12 @@
     └── <worktree-name>/
 ```
 
-- `<project-name>/` 是项目容器目录，只负责收纳 `.repo/` 和 `worktrees/`，不直接作为任何 branch 的开发工作区。
+- `<project-name>/` 是项目容器目录，只负责收纳 `.repo/` 和 `worktree/`，不直接作为任何 branch 的开发工作区。
 - `.repo/` 用作主仓库和 worktree 管理入口；除非用户明确要求，不在 `.repo/` 中直接修改业务代码、文档或资源文件。
-- `worktrees/` 下的每个子目录对应一个实际工作区。`main` 分支也应使用独立 worktree，例如 `worktrees/main/`，不要让 `main` 直接占据项目容器根目录或 `.repo/`。
+- `worktree/` 下的每个子目录对应一个实际工作区。`main` 分支也应使用独立 worktree，例如 `worktree/main/`，不要让 `main` 直接占据项目容器根目录或 `.repo/`。
 - worktree 目录名应由用户或项目约定决定；当项目没有更具体规则时，推荐与 branch 名称保持一致。
 - branch/worktree 名称推荐保持 `a/b` 的两段式格式；如果 `b` 暂不明确，使用 `main`，例如 `sub/main`，以保留后续扩展性。
-- 仓库默认主分支 `main` 可作为特殊的稳定分支名保留，并对应 `worktrees/main/`。
+- 仓库默认主分支 `main` 可作为特殊的稳定分支名保留，并对应 `worktree/main/`。
 - 每个 worktree 应对应一个明确的 Git branch；除非用户或项目规则另有说明，不在多个 worktree 中复用同一个 branch 作为长期开发工作区。
 - 如果 branch 名称发生变更，关联的 worktree 本地目录名也应同步调整；如果 worktree 本地目录名发生变更，关联 branch 名称也应同步调整，以保持检索、定位和文档记录的一致性。
 - 上述示例强调的是目录组织方式；`<project-name>` 和 `<worktree-name>` 只是占位符，不是强制命名规范。
