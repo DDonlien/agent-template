@@ -1,64 +1,27 @@
-# 项目说明模板
+# agent-template 元模板
 
-本文件是演示内容。复制到项目后，用真实项目说明替换示例。
+本目录是 Agent 协作规范的元模板，用于初始化新项目。
 
-撰写规则见 `AGENTS.md`。`README.md` 记录系统、仓库或应用的整体说明；具体需求和任务状态写入 `REQUIREMENTS.md`，视觉规范写入 `DESIGN.md`。
+## 子模板
 
-## 项目概述
+- `app-agent-template/`：App 项目模板。复制 `app-agent-template/*` 到新项目根目录使用。
+- `game-agent-template/`：Game 项目模板。复制 `game-agent-template/*` 到新项目根目录使用。
+  - `game-agent-template/universe/`：游戏叙事资产子模块。
 
-- 项目名称：
-- 一句话简介：
-- 解决的问题：
-- 目标用户：
-- 当前状态：
-
-## 当前能力
-
-- 能力 1：
-- 能力 2：
-- 能力 3：
-
-## 快速开始
+## 初始化新项目
 
 ```bash
-install command
-dev command
-test command
-build command
+# App 项目
+cp -R agent-template/app-agent-template/. /path/to/new-project/
+
+# Game 项目
+cp -R agent-template/game-agent-template/. /path/to/new-project/
 ```
 
-## 目录结构
+复制后按子模板 `AGENTS.md §0` 清理，并填写「项目专用内容」。
 
-```text
-.
-├── AGENTS.md
-├── README.md
-├── REQUIREMENTS.md
-├── DESIGN.md
-├── agent-log/
-└── src/
-```
+## 维护
 
-## 文档入口
-
-- Agent 协作规范：`AGENTS.md`
-- 需求与验收追踪：`REQUIREMENTS.md`
-- 视觉规范：`DESIGN.md`
-- 执行日志：`agent-log/`
-
-## 子功能
-
-- `path/to/subfeature/`：说明子功能用途和入口。
-
-## 运行与验证
-
-- 开发：
-- 测试：
-- 构建：
-- 发布：
-
-## 边界与限制
-
-- 当前不支持：
-- 已知限制：
-- 外部依赖：
+- 修改「标准内容」时同步更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`。
+- 维护本目录时，先阅读 [`AGENTS.md`](AGENTS.md)。
+- 顶层 `agent-log/` 保留全部历史；子模板 `agent-log/` 仅保留占位。
