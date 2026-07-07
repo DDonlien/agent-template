@@ -1,0 +1,243 @@
+# --------------------
+# Game Development Combined .gitignore
+# Unreal Engine / Unity / Godot / Wwise / FMOD
+# --------------------
+
+# --------------------
+# OS junk
+# --------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+
+# --------------------
+# Logs / temp / crash
+# --------------------
+*.log
+*.tmp
+*.temp
+*.dmp
+sysinfo.txt
+mono_crash.*.json
+
+# --------------------
+# IDE / editor
+# --------------------
+.vs/
+.vscode/
+.idea/
+
+*.suo
+*.user
+*.userprefs
+*.sln.DotSettings.user
+
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.opendb
+
+.vsconfig
+
+# --------------------
+# Visual Studio / C# / .NET generated
+# 注意：
+# - Unity 项目通常 ignore *.csproj / *.sln，因为 Unity 会生成
+# - Godot C# 项目通常需要提交 *.csproj / *.sln
+# 如果这个仓库里有 Godot C# 项目，建议不要 ignore *.csproj / *.sln
+# --------------------
+
+[Bb]in/
+[Oo]bj/
+bin/
+obj/
+
+# Unity generated solution/project files
+# 如果你需要提交 Godot C# 的 .sln/.csproj，就不要取消下面两行注释
+# *.csproj
+# *.sln
+
+*.unityproj
+*.booproj
+*.pidb
+*.svd
+*.pdb
+*.mdb
+
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# --------------------
+# Unreal Engine
+# --------------------
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+**/DerivedDataCache/
+
+# Unreal plugin generated files
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+# Packaged builds
+PackagedBuilds/
+Releases/
+Dist/
+dist/
+builds/
+Builds/
+
+
+# --------------------
+# Unity
+# --------------------
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+.utmp/
+
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+[Aa]ssets/AssetStoreTools*
+[Aa]ssets/Plugins/Editor/JetBrains*
+
+.gradle/
+**/gradleOut/
+**/build/
+
+# --------------------
+# Godot
+# Godot 4.x / GDScript / C#
+# --------------------
+.godot/
+.import/
+.mono/
+
+.nomedia
+
+export.cfg
+export_credentials.cfg
+
+*.translation
+
+data_*/
+
+.export/
+exports/
+export/
+build/
+builds/
+dist/
+release/
+releases/
+
+# --------------------
+# Build outputs / platform packages
+# 如果你希望把发布包也放进 Git LFS，可以删除这些 ignore
+# 一般建议发布包不要直接进源码仓库
+# --------------------
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.ipa
+*.apk
+*.aab
+*.msi
+*.pkg
+*.dmg
+
+# --------------------
+# Wwise
+# 建议提交：
+# - .wproj
+# - .wwu
+# - .wobjects
+# - .wsettings
+#
+# 建议忽略：
+# - Cache
+# - Logs
+# - Profiler
+#
+# GeneratedSoundBanks 是否提交看团队流程：
+# - 小团队想开箱即跑：提交，靠 .gitattributes 进 LFS
+# - CI 自动生成：ignore
+# --------------------
+
+.WwiseConsole/
+
+**/Wwise/Cache/
+**/Wwise/.cache/
+**/Wwise/Logs/
+**/Wwise/Profiler/
+**/Wwise/**/*.tmp
+
+# 如果 SoundBank 由 CI 或本机生成，不进 Git，就取消下面注释
+# **/GeneratedSoundBanks/
+
+# --------------------
+# FMOD
+# 建议提交：
+# - .fspro
+# - Metadata/
+# - Assets/
+#
+# 建议忽略：
+# - .cache
+# - .unsaved
+# - Logs
+#
+# Built Banks 是否提交看团队流程：
+# - 小团队想开箱即跑：提交，靠 .gitattributes 进 LFS
+# - CI 自动生成：ignore
+# --------------------
+**/FMOD/.cache/
+**/FMOD/.unsaved/
+**/FMOD/Cache/
+**/FMOD/Logs/
+
+# 如果 Bank 由 CI 或本机生成，不进 Git，就取消下面注释
+# **/FMOD/**/Build/
+# **/FMOD/**/Desktop/
+# **/FMOD/**/Mobile/
+
+
+# --------------------
+# Optional local config
+# --------------------
+
+.env
+.env.local
+.env.*.local
+
+*.local
+*.cache
+project/GgjProj/GgjProj (Mac).xcworkspace/contents.xcworkspacedata
+project/GgjProj/GgjProj (Mac).xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+project/GgjProj/GgjProj (Mac).xcworkspace/xcuserdata/taobe.xcuserdatad/WorkspaceSettings.xcsettings
+project/GgjProj/GgjProj.sln
+
+# --------------------
+# Repository-local build output
+# 仓库根目录的 build/：该目录及其下所有内容均不提交
+# --------------------
+/build/
+/build/**

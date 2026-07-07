@@ -1,23 +1,22 @@
 # 项目名称
 
-> 占位。复制到新项目后，用真实项目说明替换示例。
-> 撰写规则见 [`AGENTS.md §4`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/app-agent-template/AGENTS.md)。`README.md` 是项目对外的第一印象，**只放**第一次看到这个项目的人需要的信息；其他内容（目录结构、工作台、需求、视觉规范、详细命令等）应放到专门文件，并在 README 中用链接指向。
+> 占位。复制到新项目后，请用真实项目名称和对外说明替换本文件。
 
 ## 这是什么
 
-一段话说明产品形态、解决的问题和目标用户。
+用 1 到 2 段说明这个 App 是什么、为谁设计、解决什么问题，以及它与同类产品相比最重要的差异。
 
 ## 当前状态
 
 - 阶段：MVP / 内部试用 / 公开 Beta / 正式发布
-- 版本：vX.Y.Z
-- 最近一次重要发布：yyyy-mm-dd
+- 版本：`vX.Y.Z`
+- 最近一次重要发布：`yyyy-mm-dd`
 
 ## 关键能力
 
-- 能力 1：一句话描述。
-- 能力 2：一句话描述。
-- 能力 3：一句话描述。
+- 能力 1：一句话描述用户能完成什么。
+- 能力 2：一句话描述产品的核心价值。
+- 能力 3：一句话描述当前最重要的使用场景。
 
 ## 快速开始
 
@@ -25,29 +24,25 @@
 # 安装依赖
 # 示例：make install / npm install / bundle install
 
-# 启动开发模式
+# 启动开发环境
 # 示例：make dev
 
 # 运行测试
 # 示例：make test
 
-# 构建产物
+# 构建发布产物
 # 示例：make build
 ```
 
-## 入口文件
+## 进一步了解
 
-- [`AGENTS.md`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/app-agent-template/AGENTS.md) — 协作规范、目录结构与工作台
-- [`REQUIREMENTS.md`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/app-agent-template/REQUIREMENTS.md) — 需求与验收追踪
-- [`DESIGN.md`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/app-agent-template/DESIGN.md) — 视觉规范
-- `agent-log/` — 执行日志
-
-## 子功能
-
-- `<sub-feature>/`：一句话说明用途和入口。
+- [`AGENTS.md`](AGENTS.md)：协作规范与维护约束
+- [`REQUIREMENTS.md`](REQUIREMENTS.md)：需求与验收追踪
+- [`DESIGN.md`](DESIGN.md)：视觉规范
+- `agent-log/`：执行日志
 
 ## 边界与限制
 
-- 当前不支持：
-- 已知限制：
-- 外部依赖：
+- 当前不支持：填写暂不覆盖的能力边界。
+- 已知限制：填写当前版本的主要限制。
+- 外部依赖：填写关键第三方服务、平台或运行前提。

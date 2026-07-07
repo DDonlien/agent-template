@@ -15,6 +15,8 @@
 - `agent-template/` 中的 `README.md`、`REQUIREMENTS.md`、`DESIGN.md` 和 `agent-log/` 日志模板只保留演示内容；具体撰写规则统一以本 `AGENTS.md` 为准，阅读时需要注意分辨规则和示例的差异。
 - 上述创建的文件名必须全大写；其中 `AGENTS.md` 和 `REQUIREMENTS.md` 必须使用复数形式。即使用户临时写成小写或单数，也应遵循该统一标准，除非用户明确要求修改。
 - 由于本 template 本身也由 Git 管理，复制到实际仓库使用前，应先删除 `agent-template/` 中的 `.git` 等 Git 相关资产，移除其仓库特征，避免影响上层仓库管理。同时清理 `agent-log/` 中除日志模板文件 `yyyymmdd-hhmmss-utcpn-username-modelname.md` 以外的历史日志，避免把模板仓库的执行上下文带入新项目。
+- 如果当前要初始化的是 Game 项目，必须改用 `game-agent-template/`，并在新项目仓库中默认启用 Git LFS；模板自带的 `.gitattributes` 必须一并复制到项目根目录，不得删改为普通 Git 跟踪，除非用户明确要求调整。
+- Game 项目初始化时还必须一并复制模板自带的 `.gitignore`；`.gitignore` 负责忽略引擎缓存、构建产物、中间文件和其他不应入库的派生内容，规则应与资产管线、引擎和 `.gitattributes` 的跟踪边界保持一致。
 
 ### 1. 每次任务开始前
 

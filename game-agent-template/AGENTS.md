@@ -15,6 +15,8 @@
 - `agent-template/` 中的 `README.md`、`REQUIREMENTS.md`、`DESIGN.md` 和 `agent-log/` 日志模板只保留演示内容；具体撰写规则统一以本 `AGENTS.md` 为准，阅读时需要注意分辨规则和示例的差异。
 - 上述创建的文件名必须全大写；其中 `AGENTS.md` 和 `REQUIREMENTS.md` 必须使用复数形式。即使用户临时写成小写或单数，也应遵循该统一标准，除非用户明确要求修改。
 - 由于本 template 本身也由 Git 管理，复制到实际仓库使用前，应先删除 `agent-template/` 中的 `.git` 等 Git 相关资产，移除其仓库特征，避免影响上层仓库管理。同时清理 `agent-log/` 中除日志模板文件 `yyyymmdd-hhmmss-utcpn-username-modelname.md` 以外的历史日志，避免把模板仓库的执行上下文带入新项目。
+- 如果当前要初始化的是 Game 项目，必须改用 `game-agent-template/`，并在新项目仓库中默认启用 Git LFS；模板自带的 `.gitattributes` 必须一并复制到项目根目录，不得删改为普通 Git 跟踪，除非用户明确要求调整。
+- Game 项目初始化时还必须一并复制模板自带的 `.gitignore`；`.gitignore` 负责忽略引擎缓存、构建产物、中间文件和其他不应入库的派生内容，规则应与资产管线、引擎和 `.gitattributes` 的跟踪边界保持一致。
 
 ### 1. 每次任务开始前
 
@@ -303,6 +305,9 @@
 - 本地优先：玩家存档、本地配置、调试日志以本地存储为准；不得把玩家私密数据上传到与项目无关的外部服务器。
 - 引用边界：`reference/`、`universe/reference/` 与外部参考项目不默认视为项目代码，引用第三方实现时保留来源说明。
 - 凭证与日志安全：CLI 日志、本地配置文件只读访问；日志和控制台输出不得包含 token、API key 或玩家个人账号标识。
+- Git LFS 默认开启：复制 `game-agent-template/` 初始化新项目后，立即执行 Git LFS 初始化，并保留模板提供的 `.gitattributes`；附件中列出的常见游戏二进制资产类型默认通过 LFS 管理。
+- `.gitignore` 默认随模板提供：复制 `game-agent-template/` 初始化新项目后，保留模板提供的 `.gitignore`；其默认规则覆盖 Unreal / Unity / Godot / Wwise / FMOD 的常见缓存、构建产物和本地生成文件。
+- `.gitignore` 与资产边界一致：不要把应忽略的派生文件改为 LFS 跟踪，也不要把应由 `.gitattributes` 跟踪的大文件误放进忽略规则；若项目使用 Godot C#、GeneratedSoundBanks 或 FMOD Banks 等特殊流程，应按注释说明局部调整。
 
 ### 维护提示
 
