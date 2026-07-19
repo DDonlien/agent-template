@@ -1,5 +1,7 @@
 # Agent Template 元模板协作规范
 
+版本：v1.0.0-260713-093516
+
 本文件是 `agent-template/` 元模板的协作规范。
 
 本元模板不直接作为项目模板使用；项目模板位于 [`app-agent-template/AGENTS.md`](app-agent-template/AGENTS.md) 与 [`game-agent-template/AGENTS.md`](game-agent-template/AGENTS.md)。维护本元模板时，请先理解下面的规则。
@@ -32,6 +34,8 @@
 
 ## 3. 维护规则
 
+- 三份 `AGENTS.md` 文档（`agent-template/AGENTS.md`、`app-agent-template/AGENTS.md`、`game-agent-template/AGENTS.md`）的开头应包含版本号，格式为 `vx.x.x-yymmdd-hhmmss`。
+- 每次修改上述任意一份 `AGENTS.md` 时，必须同步更新其版本号：根据改动幅度调整语义版本 `x.x.x`，并将 `yymmdd-hhmmss` 改为本次修改完成时的日期时间。
 - 修改「标准内容」时，必须同时更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`。
 - 修改子模板的「项目专用内容」占位时，确保占位示例清晰、有指导性。
 - 新增子模板类型（如 `library-agent-template/`、`service-agent-template/`）时，参照 `app-agent-template/` / `game-agent-template/` 创建完整的 `AGENTS.md` / `README.md` / `REQUIREMENTS.md` / `DESIGN.md` / `agent-log/`，并在本文件增加索引。
@@ -49,4 +53,10 @@
 
 - 本目录的 `agent-log/` 保留全部历史，用于回溯元模板演进。
 - 子模板的 `agent-log/` 仅保留占位文件。
-- 每次执行任务时，按需在子规则创建日志；元模板自身的演进日志记录到顶层 `agent-log/`。
+- 每次执行任务时，按需在于规则创建日志；元模板自身的演进日志记录到顶层 `agent-log/`。
+
+## 6. Git 与网络访问要求
+
+- 维护本元模板及其子模板时，`git fetch --prune`、`git merge --ff-only` 等同步操作需要直接访问远端仓库。
+- **Git 操作不应在断网或沙箱环境中静默执行**；如果当前执行环境默认禁止联网，应提示用户切换到允许网络访问的模式，否则无法完成同步预检。
+- 这条规则同样适用于从本模板复制出去的实际项目：项目级的 `AGENTS.md` 已要求在任务开始前执行 Git 同步预检，该预检依赖网络访问。
