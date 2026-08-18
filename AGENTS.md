@@ -1,6 +1,6 @@
 # Agent Template 元模板协作规范
 
-版本：v1.0.0-260713-093516
+版本：v1.0.4-260818-005834
 
 本文件是 `agent-template/` 元模板的协作规范。
 
@@ -16,7 +16,7 @@
 
 ## 1. 标准内容
 
-「标准内容」（0–10 节）只存在于 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`，本元模板不再单独维护。
+「标准内容」只存在于 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`，本元模板不再单独维护；两份模板按通用规则、技术栈专用规则和项目专用规则模块化维护，不按标题顺序执行。
 
 修改「标准内容」时，**必须**同时更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md` 的对应章节，并在顶层 `agent-log/` 中记录变更。
 
@@ -37,6 +37,8 @@
 - 三份 `AGENTS.md` 文档（`agent-template/AGENTS.md`、`app-agent-template/AGENTS.md`、`game-agent-template/AGENTS.md`）的开头应包含版本号，格式为 `vx.x.x-yymmdd-hhmmss`。
 - 每次修改上述任意一份 `AGENTS.md` 时，必须同步更新其版本号：根据改动幅度调整语义版本 `x.x.x`，并将 `yymmdd-hhmmss` 改为本次修改完成时的日期时间。
 - 修改「标准内容」时，必须同时更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`。
+- 修改任一子模板的通用规则时，必须同步更新 app-agent-template/AGENTS.md 与 game-agent-template/AGENTS.md 的对应通用章节；仅适用于单一技术栈的规则留在对应模板。
+- 每次修改 AGENTS.md 的模板结构、规则或元数据时，必须递增语义版本号，并将时间戳更新为本次修改完成时间。
 - 修改子模板的「项目专用内容」占位时，确保占位示例清晰、有指导性。
 - 新增子模板类型（如 `library-agent-template/`、`service-agent-template/`）时，参照 `app-agent-template/` / `game-agent-template/` 创建完整的 `AGENTS.md` / `README.md` / `REQUIREMENTS.md` / `DESIGN.md` / `agent-log/`，并在本文件增加索引。
 - 修改 `game-agent-template/universe/` 时，先阅读 [`universe/AGENTS.md`](game-agent-template/universe/AGENTS.md) 并遵守其规则。
@@ -45,7 +47,7 @@
 ## 4. 复制到新项目
 
 - 复制 `app-agent-template/*` 或 `game-agent-template/*` 到新项目根目录。
-- 复制后按子模板 `AGENTS.md §0` 清理：删除嵌套 `.git`、`.github`、IDE 配置；删除子模板 `agent-log/` 中的占位文件。
+- 复制后按子模板 `AGENTS.md` 的“仓库结构管理”规则清理：删除嵌套 `.git`、`.github`、IDE 配置；删除子模板 `agent-log/` 中的占位文件。
 - 在新项目根 `AGENTS.md`「项目专用内容」中填写真实信息。
 - 顶层 `agent-template/` 目录可保留作为参考，也可以删除。
 
