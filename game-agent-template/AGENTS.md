@@ -1,7 +1,7 @@
 ---
 target-repo-type: game
 language: zh-CN
-version: "v1.9.2-260818-145126"
+version: "v1.10.0-260824-230456"
 source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-template/AGENTS.md"
 ---
 
@@ -330,6 +330,11 @@ source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-templat
 5. 每次递增版本号，必须在当次执行日志中写明改了哪一位、依据什么判断。
 
 # 技术栈专用规则
+
+## Bento H5 PPT 规则
+
+1. 如果项目使用 Bento H5 PPT，先检查 `~/.claude/skills/bento-slides/SKILL.md` 是否存在。
+    1. 如果不存在，执行 `mkdir -p ~/.claude/skills/bento-slides && curl -fsSL https://bento.page/skills/bento-slides/SKILL.md -o ~/.claude/skills/bento-slides/SKILL.md` 安装。
 
 ## Godot 规则
 
