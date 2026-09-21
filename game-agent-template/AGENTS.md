@@ -1,7 +1,7 @@
 ---
 target-repo-type: game
 language: zh-CN
-version: "v1.10.1-260916-010202"
+version: "v1.10.2-260921-205742"
 source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-template/AGENTS.md"
 ---
 
@@ -358,7 +358,9 @@ source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-templat
     2. 写操作前先确认编辑器会话已连接且处于可写状态；写操作后重新读取节点或资源并检查日志，确认写入生效。
     3. 覆盖二进制资产前先检查工作区是否已有未提交改动；目标文件属于用户或其他任务的改动时，保留备份、明确覆盖范围，并只验证用户本次指定的资产。
 3. 调试无响应排查顺序：执行 UE / Rider 相关操作长时间无响应但相关进程未崩溃时，先通过 Rider MCP 检查调试会话是否命中断点，不要把断点暂停误判为引擎卡死或 MCP 失联；若短时间内反复在同一位置命中同一断点，判断运行可能已卡死，此时退出运行或调试会话并告知用户，不反复继续，也不强制结束 UE Editor。
-4. 引擎 / 编辑器启动默认值：通过 Rider 重启或重新启动 Unreal Editor 时，默认使用 `Development` 构建配置和 `Debug` 模式；只有用户明确要求时才切换为 `DebugGame`、`Shipping`、`Test` 等配置或非 Debug 启动模式。
+4. 默认不得启动、退出或重启 Unreal Editor，也不得为了冷加载、模块刷新、验证磁盘资产或恢复工具连接而操作编辑器进程；只有用户在当前任务中明确要求时才可以执行。用户明确要求启动或重启时，默认使用 `Development` 构建配置和 `Debug` 模式；只有用户同时指定时才切换为 `DebugGame`、`Shipping`、`Test` 等配置或非 Debug 启动模式。
+5. 默认不得新建自动化测试脚本、临时测试用例或一次性测试资产；只有用户在当前任务中明确要求创建自动化测试时才可以新增。验证优先使用已有测试、编译、结构读回、日志和人工验收边界，并明确未覆盖的运行时风险。
+6. 默认不得使用 Computer Use 进行 UE 视觉验证、截图验收或模拟人工观察；只有用户在当前任务中明确要求使用 Computer Use 做视觉验证时才可以执行。未获授权时，玩家可见效果一律标记为待用户实际验收，不用结构读回或编译结果替代视觉结论。
 
 ## TypeScript 规则
 
