@@ -6,7 +6,7 @@
 
 如需在 App / Game 项目中维护视觉规范，请使用对应子模板的 `DESIGN.md`：
 
-- App 项目：[`app-agent-template/DESIGN.md`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/app-agent-template/DESIGN.md)
-- Game 项目：[`game-agent-template/DESIGN.md`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/game-agent-template/DESIGN.md)
+- App 项目：[`app-agent-template/DESIGN.md`](app-agent-template/DESIGN.md)
+- Game 项目：[`game-agent-template/DESIGN.md`](game-agent-template/DESIGN.md)
 
-撰写规则见 [`AGENTS.md`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/AGENTS.md) 与子模板的 `AGENTS.md` 「标准内容」§5。
+撰写规则见 [`AGENTS.md`](AGENTS.md) 与 [子模板的 DESIGN 维护纪律](app-agent-template/AGENTS.md#designmd-维护纪律)。

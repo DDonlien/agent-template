@@ -1,8 +1,10 @@
 # Universe 协作规范
 
+版本：v1.0.0-261023-160133
+
 本文件是 `universe/` 目录的 Agent 子规则，用于指导 Agent 如何维护本目录下的剧本、世界观、故事、Wiki 和叙事设计资产。
 
-本文件不是"如何写好剧本"的创作指南，也不是项目根目录的通用工程规范。工程、Git、日志、任务管理等通用规则，仍以上层 `AGENTS.md` 为准；在 `agent-template` 元模板中，上层 `AGENTS.md` 位于 [`../AGENTS.md`](../AGENTS.md)；当 `game/` 子模板被复制到新项目根目录后，上层 `AGENTS.md` 变为项目根的 `AGENTS.md`。执行本规范时，不得违背上层 `AGENTS.md`。
+本文件不是"如何写好剧本"的创作指南，也不是项目根目录的通用工程规范。工程、混合版本管理、工具、Issue 与检查边界等通用规则，仍以上层 `AGENTS.md` 为准；在 `agent-template` 元模板中，上层 `AGENTS.md` 位于 [`../AGENTS.md`](../AGENTS.md)；当 `game-agent-template/` 子模板被复制到新项目根目录后，上层 `AGENTS.md` 变为项目根的 `AGENTS.md`。执行本规范时，不得违背上层 `AGENTS.md`。
 
 `AGENTS.md` 是约定文件名，可以作为例外保留。除约定文件名外，`universe/` 内所有文件夹名和英文文件名统一使用单数形式。
 
@@ -42,6 +44,14 @@ Agent 执行任务前应按以下顺序阅读上下文：
 5. 如果涉及角色、地点、组织、事件或术语，再检查对应 `wiki/` 页面。
 
 不要为了小改动全量读取整个 `universe/`。优先使用搜索定位相关文件。
+
+### 0.4 Issue 与检查边界
+
+- Universe 任务共用当前游戏工作副本根的 [`issue/`](../issue/)，按上层 [Issue 维护标准](../AGENTS.md#issue-维护标准) 使用稳定 ID 和 16 类类型；内容任务通常使用 `CONTENT`，具体类型按实际工作决定。
+- 标准路径为 `project-name/worktree(如有)/issue/issue-issueid-issuetype-issuename-versioncontrolid.md`。`versioncontrolid` 含义待定义，保留字面占位，不猜测为 commit、branch 或 change。
+- Issue 正文维护当前范围、事实和状态，`## Comments` 只追加决策与行动；故事、设定与脚本文件维护内容本身，不承载平行任务日志。实现、内容一致性检查和用户创作 / 游戏验收分别记录，不能用部分完成勾完整项。
+- 只对相关文本、双链、结构和受影响引用做必要检查，优先 Headless；视觉、交互、演出与大量自动化验收由用户负责。工具门槛继承上层 Blender / UE Blueprint / Rider / Godot 规则，不因文字整理而检查无关 MCP。
+- 旧日志模板保存在 [停用档案](archive/retired-workflow/README.md)，不再创建 `agent-log/`、`REQUIREMENTS.md` 或独立的 universe 任务目录；不为对齐目录补空文档。
 
 ---
 

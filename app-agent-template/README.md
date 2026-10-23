@@ -1,6 +1,6 @@
 # 项目名称
 
-> 占位。复制到新项目后，请用真实项目名称和对外说明替换本文件。
+> 占位。按实际需要复制到新项目后，请用真实项目名称和对外说明替换本文件。
 
 ## 这是什么
 
@@ -37,9 +37,9 @@
 ## 进一步了解
 
 - [`AGENTS.md`](AGENTS.md)：协作规范与维护约束
-- [`REQUIREMENTS.md`](REQUIREMENTS.md)：需求与验收追踪
+- [`issue/`](issue/)：任务、检查、用户验收和交接；[Issue 模板](issue/issue-issueid-issuetype-issuename-versioncontrolid.md) 仅作示例
 - [`DESIGN.md`](DESIGN.md)：视觉规范
-- `agent-log/`：执行日志
+- [停用档案](archive/retired-workflow/README.md)：旧需求与执行日志，不用于新任务
 
 ## 边界与限制
 

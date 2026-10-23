@@ -1,27 +1,20 @@
 # agent-template 元模板
 
-本目录是 Agent 协作规范的元模板，用于初始化新项目。
+用于初始化和维护 App / Game 项目的 Agent 协作规范。模板优先使用 Headless 工作方式，以 `issue/` 记录需求、检查和交接，区分实现完成与用户验收。
 
 ## 子模板
 
-- `app-agent-template/`：App 项目模板。复制 `app-agent-template/*` 到新项目根目录使用。
-- `game-agent-template/`：Game 项目模板。复制 `game-agent-template/*` 到新项目根目录使用。
-  - `game-agent-template/universe/`：游戏叙事资产子模块。
+- [App 模板](app-agent-template/AGENTS.md)：应用、网站、工具和服务项目。
+- [Game 模板](game-agent-template/AGENTS.md)：游戏项目，包含 [universe 叙事资产规则](game-agent-template/universe/AGENTS.md)。
 
-## 初始化新项目
+## 初始化项目
 
-```bash
-# App 项目
-cp -R agent-template/app-agent-template/. /path/to/new-project/
+在用户指定的新项目目录中按需复制相应子模板，包含适用的 `.gitignore` / `.gitattributes` 等隐藏文件；排除嵌套 `.git`、个人 IDE 配置与 `archive/retired-workflow/` 停用档案。保留 `issue/` 中的一个 [Issue 模板](app-agent-template/issue/issue-issueid-issuetype-issuename-versioncontrolid.md)，按实际项目填写规则与说明，其他文档按需要维护。
 
-# Game 项目
-cp -R agent-template/game-agent-template/. /path/to/new-project/
-```
-
-复制后按子模板 `AGENTS.md §0` 清理，并填写「项目专用内容」。
+任务路径统一为 `project-name/worktree(如有)/issue/issue-issueid-issuetype-issuename-versioncontrolid.md`。`versioncontrolid` 尚待定义，目前保留字面占位；目录示例不授权创建 branch 或 worktree。
 
 ## 维护
 
-- 修改「标准内容」时同步更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`。
-- 维护本目录时，先阅读 [`AGENTS.md`](AGENTS.md)。
-- 顶层 `agent-log/` 保留全部历史；子模板 `agent-log/` 仅保留占位。
+先阅读 [`AGENTS.md`](AGENTS.md)。通用规则同时更新 App / Game，活动维护记录见 [`issue/`](issue/)；普通项目任务不自动升级模板，也不自动提交。
+
+旧需求与执行日志保留在 [停用档案](archive/retired-workflow/README.md)，不再用于新任务。Issue 正文维护当前事实，Comments 追加历史；16 类类型保留原含义，见 [Issue 类型](app-agent-template/AGENTS.md#issue-类型)。

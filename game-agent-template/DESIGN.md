@@ -1,8 +1,8 @@
 # 视觉规范模板
 
-本文件是 Game 项目子模板的占位。复制到新项目后，用真实视觉规范替换示例。
+本文件是 Game 项目子模板的占位。仅在项目需要视觉规范时，用真实内容替换示例，不强制补齐空字段。
 
-撰写规则见 [`AGENTS.md §5`](file:///Users/taobe/Projects/GitHub/Personal/agent-template/game-agent-template/AGENTS.md)。`DESIGN.md` 只记录视觉设计系统，不记录引擎架构、仓库说明或具体需求。
+撰写规则见 [`AGENTS.md` 的 DESIGN 维护纪律](AGENTS.md#designmd-维护纪律)。`DESIGN.md` 只记录视觉设计系统，不记录引擎架构、仓库说明或具体需求。
 
 ## 视觉主题
 

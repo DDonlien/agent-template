@@ -1,64 +1,34 @@
 # Agent Template 元模板协作规范
 
-版本：v1.0.5-260916-010202
+版本：v2.0.1-261023-173015
 
-本文件是 `agent-template/` 元模板的协作规范。
+本仓库维护可复制的 App / Game 协作模板，不直接作为项目模板。用户最新明确要求优先于模板和历史资料。
 
-本元模板不直接作为项目模板使用；项目模板位于 [`app-agent-template/AGENTS.md`](app-agent-template/AGENTS.md) 与 [`game-agent-template/AGENTS.md`](game-agent-template/AGENTS.md)。维护本元模板时，请先理解下面的规则。
+## 适用规则与入口
 
-## 0. 元模板说明
+1. 元模板维护采用 [App 模板的通用规则](app-agent-template/AGENTS.md#通用规则)，包括最小改动、Headless、Issue、版本管理与用户验收边界；不继承其项目示例。Game 通用部分必须与 App 一致。
+2. 初始化 App 使用 [`app-agent-template/`](app-agent-template/AGENTS.md)，初始化 Game 使用 [`game-agent-template/`](game-agent-template/AGENTS.md)。`game-agent-template/universe/` 是叙事资产子目录；改动前阅读其 [局部规则](game-agent-template/universe/AGENTS.md)。
+3. 普通项目任务不自动检查或升级远端模板。维护本仓库时只检查当前工作副本与目标改动，不自动执行远端同步；分支 / worktree 的创建、切换和重定位均须明确授权。
+4. 默认不 commit、push、创建 PR 或执行其他提交 / 发布动作；单独的每日 commit 和手动 commit 流程不提供本任务授权。
 
-- 本目录是 Agent 协作规范的元仓库。
-- 顶层 `agent-template/` 不直接作为项目模板；它包含 `app-agent-template/` 与 `game-agent-template/` 两个子模板供复制。
-- 初始化 App 项目时，复制 `app-agent-template/*` 到新项目根目录。
-- 初始化 Game 项目时，复制 `game-agent-template/*` 到新项目根目录。
-- `game-agent-template/universe/` 是 Game 子模板的子模块，用于游戏叙事资产。
+## 仓库内容
 
-## 1. 标准内容
+- [`README.md`](README.md)：模板用途与初始化入口。
+- [`issue/`](issue/)：活动维护任务、检查与交接；[Issue 模板](issue/issue-issueid-issuetype-issuename-versioncontrolid.md) 是唯一占位模板。
+- [`DESIGN.md`](DESIGN.md)：元模板无视觉界面的现有说明。
+- [`app-agent-template/`](app-agent-template/AGENTS.md)、[`game-agent-template/`](game-agent-template/AGENTS.md)：可复制的项目规则与示例文档。
+- [`archive/retired-workflow/`](archive/retired-workflow/README.md)：已停用的旧需求、执行日志及模板，保留历史原文，不再追加新任务。
 
-「标准内容」只存在于 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`，本元模板不再单独维护；两份模板按通用规则、技术栈专用规则和项目专用规则模块化维护，不按标题顺序执行。
+## 模板维护
 
-修改「标准内容」时，**必须**同时更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md` 的对应章节，并在顶层 `agent-log/` 中记录变更。
+1. 通用规则只在 App / Game 的通用部分维护；修改时同步两份，保持内容一致。技术栈专用规则放在对应模板，项目示例保持清晰且不强制填空。
+2. 根、App、Game 的 `AGENTS.md` 修改规则或元数据时递增自身语义版本，并更新 `vx.x.x-yymmdd-hhmmss` 时间戳；本次 v2.0.0 表示从旧需求 / 日志制度迁到 Issue 的协作流程变化。Universe 的局部版本独立维护。
+3. 修改结构时同步相关 README、DESIGN、Issue 和 universe 引用；用 `rg` 与 Markdown 链接 / diff 检查确认一致性。按本次范围说明实际检查，视觉和大量自动化验收由用户决定。
+4. 活动任务迁到 `issue/` 并保留旧稳定 ID。Issue 正文只维护当前事实，`## Comments` 只追加；16 类类型及完整规范以 [Issue 维护标准](app-agent-template/AGENTS.md#issue-维护标准) 和 [Issue 类型](app-agent-template/AGENTS.md#issue-类型) 为准。
+5. 标准路径为 `project-name/worktree(如有)/issue/issue-issueid-issuetype-issuename-versioncontrolid.md`。`versioncontrolid` 尚未定义，继续保留明确占位，不推断为 commit 或 branch，不为填值执行版本管理操作。
+6. 新增子模板时提供适用的规则、README 与一个 Issue 模板，其他文档按实际需要创建；不复活旧 `REQUIREMENTS.md` / `agent-log/` 制度，不为每层目录补空文档。
+7. 维护规则与文件格式，不修改 my-issue 插件；现有实现兼容属于独立任务。
 
-## 2. 元模板结构
+## 复制到项目
 
-- [`AGENTS.md`](AGENTS.md)：本文件。
-- [`README.md`](README.md)：元模板使用说明。
-- [`REQUIREMENTS.md`](REQUIREMENTS.md)：元模板自身维护需求。
-- [`DESIGN.md`](DESIGN.md)：标记"不适用"，元模板无 UI。
-- `.gitignore`：默认忽略 `.DS_Store`。
-- `agent-log/`：元模板自身的执行日志；保留全部历史。
-- `app-agent-template/`：App 项目子模板。
-- `game-agent-template/`：Game 项目子模板。
-- `game-agent-template/universe/`：Game 子模板下的叙事资产子模块。
-
-## 3. 维护规则
-
-- 三份 `AGENTS.md` 文档（`agent-template/AGENTS.md`、`app-agent-template/AGENTS.md`、`game-agent-template/AGENTS.md`）的开头应包含版本号，格式为 `vx.x.x-yymmdd-hhmmss`。
-- 每次修改上述任意一份 `AGENTS.md` 时，必须同步更新其版本号：根据改动幅度调整语义版本 `x.x.x`，并将 `yymmdd-hhmmss` 改为本次修改完成时的日期时间。
-- 修改「标准内容」时，必须同时更新 `app-agent-template/AGENTS.md` 与 `game-agent-template/AGENTS.md`。
-- 修改任一子模板的通用规则时，必须同步更新 app-agent-template/AGENTS.md 与 game-agent-template/AGENTS.md 的对应通用章节；仅适用于单一技术栈的规则留在对应模板。
-- 每次修改 AGENTS.md 的模板结构、规则或元数据时，必须递增语义版本号，并将时间戳更新为本次修改完成时间。
-- 修改子模板的「项目专用内容」占位时，确保占位示例清晰、有指导性。
-- 新增子模板类型（如 `library-agent-template/`、`service-agent-template/`）时，参照 `app-agent-template/` / `game-agent-template/` 创建完整的 `AGENTS.md` / `README.md` / `REQUIREMENTS.md` / `DESIGN.md` / `agent-log/`，并在本文件增加索引。
-- 修改 `game-agent-template/universe/` 时，先阅读 [`universe/AGENTS.md`](game-agent-template/universe/AGENTS.md) 并遵守其规则。
-- 子模板 `agent-log/` 仅保留占位文件；顶层 `agent-log/` 保留全部历史。
-
-## 4. 复制到新项目
-
-- 复制 `app-agent-template/*` 或 `game-agent-template/*` 到新项目根目录。
-- 复制后按子模板 `AGENTS.md` 的“仓库结构管理”规则清理：删除嵌套 `.git`、`.github`、IDE 配置；删除子模板 `agent-log/` 中的占位文件。
-- 在新项目根 `AGENTS.md`「项目专用内容」中填写真实信息。
-- 顶层 `agent-template/` 目录可保留作为参考，也可以删除。
-
-## 5. agent-log 规则
-
-- 本目录的 `agent-log/` 保留全部历史，用于回溯元模板演进。
-- 子模板的 `agent-log/` 仅保留占位文件。
-- 每次执行任务时，按需在于规则创建日志；元模板自身的演进日志记录到顶层 `agent-log/`。
-
-## 6. Git 与网络访问要求
-
-- 维护本元模板及其子模板时，`git fetch --prune`、`git merge --ff-only` 等同步操作需要直接访问远端仓库。
-- **Git 操作不应在断网或沙箱环境中静默执行**；如果当前执行环境默认禁止联网，应提示用户切换到允许网络访问的模式，否则无法完成同步预检。
-- 这条规则同样适用于从本模板复制出去的实际项目：项目级的 `AGENTS.md` 已要求在任务开始前执行 Git 同步预检，该预检依赖网络访问。
+按 [`README.md`](README.md) 选择对应子模板，保留适用隐藏配置，排除模板 `.git`、个人 IDE 配置和停用档案。新项目按实际内容填写规则，使用根 `issue/`；已有项目只按用户授权迁移，不自动改工作区布局、版本管理系统或分支。
