@@ -1,6 +1,6 @@
 # Agent Template 元模板协作规范
 
-版本：v2.0.1-261023-173015
+版本：v2.0.2-261023-181830
 
 本仓库维护可复制的 App / Game 协作模板，不直接作为项目模板。用户最新明确要求优先于模板和历史资料。
 
@@ -21,7 +21,7 @@
 
 ## 模板维护
 
-1. 通用规则只在 App / Game 的通用部分维护；修改时同步两份，保持内容一致。技术栈专用规则放在对应模板，项目示例保持清晰且不强制填空。
+1. 通用规则只在 App / Game 的通用部分维护；修改时同步两份，保持内容一致。技术栈专用规则放在对应模板；涉及引擎或原生资产时，按 Game 的[引擎与原生资产实现原则](game-agent-template/AGENTS.md#引擎与原生资产实现原则)维护局部一致性、可编辑资产与原生能力优先，具体引擎只补必要差异。项目示例保持清晰且不强制填空。
 2. 根、App、Game 的 `AGENTS.md` 修改规则或元数据时递增自身语义版本，并更新 `vx.x.x-yymmdd-hhmmss` 时间戳；本次 v2.0.0 表示从旧需求 / 日志制度迁到 Issue 的协作流程变化。Universe 的局部版本独立维护。
 3. 修改结构时同步相关 README、DESIGN、Issue 和 universe 引用；用 `rg` 与 Markdown 链接 / diff 检查确认一致性。按本次范围说明实际检查，视觉和大量自动化验收由用户决定。
 4. 活动任务迁到 `issue/` 并保留旧稳定 ID。Issue 正文只维护当前事实，`## Comments` 只追加；16 类类型及完整规范以 [Issue 维护标准](app-agent-template/AGENTS.md#issue-维护标准) 和 [Issue 类型](app-agent-template/AGENTS.md#issue-类型) 为准。
