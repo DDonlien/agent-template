@@ -1,6 +1,6 @@
 # Agent Template 元模板协作规范
 
-版本：v2.0.2-261023-181830
+版本：v2.1.2-261024-092439
 
 本仓库维护可复制的 App / Game 协作模板，不直接作为项目模板。用户最新明确要求优先于模板和历史资料。
 
@@ -14,7 +14,7 @@
 ## 仓库内容
 
 - [`README.md`](README.md)：模板用途与初始化入口。
-- [`issue/`](issue/)：活动维护任务、检查与交接；[Issue 模板](issue/issue-issueid-issuetype-issuename-versioncontrolid.md) 是唯一占位模板。
+- [`issue/`](issue/)：活动维护任务、检查与交接；[Issue 模板](issue/issue_template.md) 是唯一占位模板。
 - [`DESIGN.md`](DESIGN.md)：元模板无视觉界面的现有说明。
 - [`app-agent-template/`](app-agent-template/AGENTS.md)、[`game-agent-template/`](game-agent-template/AGENTS.md)：可复制的项目规则与示例文档。
 - [`archive/retired-workflow/`](archive/retired-workflow/README.md)：已停用的旧需求、执行日志及模板，保留历史原文，不再追加新任务。
@@ -25,7 +25,7 @@
 2. 根、App、Game 的 `AGENTS.md` 修改规则或元数据时递增自身语义版本，并更新 `vx.x.x-yymmdd-hhmmss` 时间戳；本次 v2.0.0 表示从旧需求 / 日志制度迁到 Issue 的协作流程变化。Universe 的局部版本独立维护。
 3. 修改结构时同步相关 README、DESIGN、Issue 和 universe 引用；用 `rg` 与 Markdown 链接 / diff 检查确认一致性。按本次范围说明实际检查，视觉和大量自动化验收由用户决定。
 4. 活动任务迁到 `issue/` 并保留旧稳定 ID。Issue 正文只维护当前事实，`## Comments` 只追加；16 类类型及完整规范以 [Issue 维护标准](app-agent-template/AGENTS.md#issue-维护标准) 和 [Issue 类型](app-agent-template/AGENTS.md#issue-类型) 为准。
-5. 标准路径为 `project-name/worktree(如有)/issue/issue-issueid-issuetype-issuename-versioncontrolid.md`。`versioncontrolid` 尚未定义，继续保留明确占位，不推断为 commit 或 branch，不为填值执行版本管理操作。
+5. 标准路径为 `project-name/worktree(如有)/issue/issue_任务描述[_实际版本编号].md`。实际实施版本只在核实后填写；尚无提交或未核实则省略文件名后缀，并在 property 说明。
 6. 新增子模板时提供适用的规则、README 与一个 Issue 模板，其他文档按实际需要创建；不复活旧 `REQUIREMENTS.md` / `agent-log/` 制度，不为每层目录补空文档。
 7. 维护规则与文件格式，不修改 my-issue 插件；现有实现兼容属于独立任务。
 

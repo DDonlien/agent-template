@@ -9,9 +9,9 @@
 
 ## 初始化项目
 
-在用户指定的新项目目录中按需复制相应子模板，包含适用的 `.gitignore` / `.gitattributes` 等隐藏文件；排除嵌套 `.git`、个人 IDE 配置与 `archive/retired-workflow/` 停用档案。保留 `issue/` 中的一个 [Issue 模板](app-agent-template/issue/issue-issueid-issuetype-issuename-versioncontrolid.md)，按实际项目填写规则与说明，其他文档按需要维护。
+在用户指定的新项目目录中按需复制相应子模板，包含适用的 `.gitignore` / `.gitattributes` 等隐藏文件；排除嵌套 `.git`、个人 IDE 配置与 `archive/retired-workflow/` 停用档案。保留 `issue/` 中的一个 [Issue 模板](app-agent-template/issue/issue_template.md)，按实际项目填写规则与说明，其他文档按需要维护。
 
-任务路径统一为 `project-name/worktree(如有)/issue/issue-issueid-issuetype-issuename-versioncontrolid.md`。`versioncontrolid` 尚待定义，目前保留字面占位；目录示例不授权创建 branch 或 worktree。
+任务路径统一为 `project-name/worktree(如有)/issue/issue_任务描述[_实际版本编号].md`。实际实施版本只在核实后填写；尚无提交或未核实则省略文件名后缀，并在 property 说明。目录示例不授权创建 branch 或 worktree。
 
 ## 维护
 
