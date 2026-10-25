@@ -38,7 +38,7 @@
 ## 进一步了解
 
 - [`AGENTS.md`](AGENTS.md)：协作规范与维护约束
-- [`issue/`](issue/)：任务、检查、用户验收和交接；[Issue 模板](issue/issue-issueid-issuetype-issuename-versioncontrolid.md) 仅作示例
+- [`issue/`](issue/)：任务、检查、用户验收和交接；[Issue 模板](issue/issue_template.md) 仅作示例
 - [`DESIGN.md`](DESIGN.md)：视觉规范
 - [`universe/AGENTS.md`](universe/AGENTS.md)：叙事资产协作规范
 - [停用档案](archive/retired-workflow/README.md)：旧需求与执行日志，不用于新任务

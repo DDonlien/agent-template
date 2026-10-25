@@ -1,6 +1,6 @@
 # Agent Template 元模板协作规范
 
-版本：v2.1.2-261024-092439
+版本：v2.1.4-261024-162234
 
 本仓库维护可复制的 App / Game 协作模板，不直接作为项目模板。用户最新明确要求优先于模板和历史资料。
 
@@ -24,8 +24,8 @@
 1. 通用规则只在 App / Game 的通用部分维护；修改时同步两份，保持内容一致。技术栈专用规则放在对应模板；涉及引擎或原生资产时，按 Game 的[引擎与原生资产实现原则](game-agent-template/AGENTS.md#引擎与原生资产实现原则)维护局部一致性、可编辑资产与原生能力优先，具体引擎只补必要差异。项目示例保持清晰且不强制填空。
 2. 根、App、Game 的 `AGENTS.md` 修改规则或元数据时递增自身语义版本，并更新 `vx.x.x-yymmdd-hhmmss` 时间戳；本次 v2.0.0 表示从旧需求 / 日志制度迁到 Issue 的协作流程变化。Universe 的局部版本独立维护。
 3. 修改结构时同步相关 README、DESIGN、Issue 和 universe 引用；用 `rg` 与 Markdown 链接 / diff 检查确认一致性。按本次范围说明实际检查，视觉和大量自动化验收由用户决定。
-4. 活动任务迁到 `issue/` 并保留旧稳定 ID。Issue 正文只维护当前事实，`## Comments` 只追加；16 类类型及完整规范以 [Issue 维护标准](app-agent-template/AGENTS.md#issue-维护标准) 和 [Issue 类型](app-agent-template/AGENTS.md#issue-类型) 为准。
-5. 标准路径为 `project-name/worktree(如有)/issue/issue_任务描述[_实际版本编号].md`。实际实施版本只在核实后填写；尚无提交或未核实则省略文件名后缀，并在 property 说明。
+4. 活动任务迁到 `issue/` 并保留旧稳定 ID。属性使用 frontmatter，正文仅有 `# Description` 和 `# Comments` 两个一级标题；Description 维护当前事实，Comments 以规定的二级标题追加。16 类类型及完整规范以 [Issue 维护标准](app-agent-template/AGENTS.md#issue-维护标准) 和 [Issue 类型](app-agent-template/AGENTS.md#issue-类型) 为准。
+5. 标准路径为 `project-name/worktree(如有)/issue/issue_任务描述.md`，按原语言命名，中文不翻译、英文词用连字符；类型只在属性中，文件名不带版本编号。Git / P4 编号记在对应 Comment 内容里，可涉及多个 change；`recorded-version` 仅为可选的内容发布版本。历史时间、具体 Agent、模型或原会话无法追溯时保留原始信息并说明缺失，不补造；每条实际执行 Comment 末尾使用有来源依据的对应会话深度链接，不照抄模板示例，也不把文档迁移会话冒充历史业务执行会话。
 6. 新增子模板时提供适用的规则、README 与一个 Issue 模板，其他文档按实际需要创建；不复活旧 `REQUIREMENTS.md` / `agent-log/` 制度，不为每层目录补空文档。
 7. 维护规则与文件格式，不修改 my-issue 插件；现有实现兼容属于独立任务。
 
