@@ -1,18 +1,19 @@
 ---
 uid: "00001"
 type: DOC
-status: in_progress
+status: done
 importance: p0
 emergency: p0
-updated-time: "2026-10-28T05:12:01+00:00"
+updated-time: "2026-10-28T05:17:17+00:00"
 created-time: "2026-10-28T05:12:01+00:00"
 start-time:
-closed-time:
+closed-time: "2026-10-28T05:17:17+00:00"
 created-version:
 closed-version:
 estimated-workhour:
 actual-workhour:
-commit-related: []
+commit-related:
+  - "f8c17ae124a79a857bb7b2b8d55b5819338a128c"
 tags:
   - agent-template
   - collaboration
@@ -31,8 +32,8 @@ tags:
 
 - [x] 确认最终 Issues trailer、多对多关联及仓库内 UID 域。
 - [x] 保留现有内容更新检查、按需文档维护和授权边界；普通任务不自动升级远端模板。
-- [ ] 完成源规则、三份模板及本 Issue 的最终一致性检查并提交。
-- [ ] 将已产生的真实适配提交 hash 录入 commit-related 和对应 Comment。
+- [x] 完成源规则、三份模板及本 Issue 的最终一致性检查并提交。
+- [x] 将本次记录前已产生的真实适配提交完整 hash 录入 commit-related 和对应 Comment。
 
 本 Issue 只覆盖源仓库。本轮跨仓库首批写入仍受此前审批拒绝限制，其他工作副本及 13 个未检出分支未推广；my-issue/main 的 merge、第三方、生成及 demo 副本保持不动。
 
@@ -45,5 +46,17 @@ commit-related 记录填写时已存在的相关提交；后续记录提交自�
 依据用户最终确认，将提交内关联统一为单行 Issues trailer，移除待确认载体及原生标签移动表述。此时尚未产生本轮实际适配提交，因此 commit-related 暂为空列表，不填写伪造或占位 hash；真实 hash 在提交生成后记录。
 
 本次执行环境未提供完整模型标识，未补造 Model-Detail。未执行 GUI、引擎或业务构建验收。
+
+> [本次规范适配需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
+
+## 20261028-051717_Codex
+
+> f8c17ae124a79a857bb7b2b8d55b5819338a128c
+
+源规范实现提交已完成，实际修改四份规则、三份模板及本 Issue；提交末尾为 `Issues: issue-00001`。三份模板、App/Game 通用规则、UID 字符串与 YAML / 标题结构检查通过，scoped diff 检查通过；原有内容更新检查和按需文档维护条款保留。未进行 GUI、引擎或业务构建验收。
+
+本次记录将上述已存在的完整实现 hash 反向写入 commit-related。承载本条记录的提交尚未生成，因此其自身 hash 留待下一次实际 Issue 更新补入；本轮不会为追写自身 hash 追加第三次提交，也不改写历史。源仓库范围已完成；跨仓库推广仍未执行，不能将本条状态理解为全库完成。
+
+执行环境未提供完整模型标识，未补造 Model-Detail。
 
 > [本次规范适配需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
