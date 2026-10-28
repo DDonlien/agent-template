@@ -4,7 +4,7 @@ type: DOC
 status: done
 importance: p0
 emergency: p0
-updated-time: '2026-10-28T06:14:41.555810+00:00'
+updated-time: '2026-10-28T06:44:28.615063+00:00'
 created-time: '2026-10-28T05:12:01+00:00'
 start-time: null
 closed-time: '2026-10-28T05:17:17+00:00'
@@ -15,6 +15,7 @@ actual-workhour: null
 commit-related:
 - f8c17ae124a79a857bb7b2b8d55b5819338a128c
 - 070c03b565a24fecdb587b3e9890bddb458d7629
+- 5aa803d1a449561cef7bac127b9ce7f7fe6c49a7
 tags:
 - agent-template
 - collaboration
@@ -29,6 +30,8 @@ tags:
 - 源模板保留用户新增字段、Comment 首尾引用和附件路径；commit-related 反向记录实际完整 hash，未知时间、版本和工时留空。
 - `732bc1fa0d74586aea519e8ba7e8ee05eb448589` 是用户手写模板的输入提交，不冒充本轮适配实现提交。
 
+- AI Comment 的 Model-Detail 记录厂牌、确切版本、规模/型号档位、推理级别与加速选择五维；不可核实项用 UNKNOWN，不用系列名或响应速度猜填。
+
 ## 当前范围与状态
 
 - [x] 确认最终 Issues trailer、多对多关联及仓库内 UID 域。
@@ -42,7 +45,7 @@ commit-related 记录填写时已存在的相关提交；后续记录提交自�
 
 # Comments
 
-## 20261028-051201_Codex
+## 20261028-051201_Codex_UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN
 
 依据用户最终确认，将提交内关联统一为单行 Issues trailer，移除待确认载体及原生标签移动表述。此时尚未产生本轮实际适配提交，因此 commit-related 暂为空列表，不填写伪造或占位 hash；真实 hash 在提交生成后记录。
 
@@ -50,7 +53,7 @@ commit-related 记录填写时已存在的相关提交；后续记录提交自�
 
 > [本次规范适配需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
 
-## 20261028-051717_Codex
+## 20261028-051717_Codex_UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN
 
 > f8c17ae124a79a857bb7b2b8d55b5819338a128c
 
@@ -62,7 +65,7 @@ commit-related 记录填写时已存在的相关提交；后续记录提交自�
 
 > [本次规范适配需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
 
-## 20261028-061441_Codex
+## 20261028-061441_Codex_UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN
 
 > 070c03b565a24fecdb587b3e9890bddb458d7629
 
@@ -71,3 +74,15 @@ commit-related 记录填写时已存在的相关提交；后续记录提交自�
 本条记录提交自身的 SHA 仍留待下一次实际更新补入；未运行 GUI、引擎或业务构建验收，模型详情未提供。
 
 > [本次规范刷新需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
+
+## 20261028-064428_Codex_GPT-UNKNOWN-UNKNOWN-UNKNOWN-UNKNOWN
+
+> 5aa803d1a449561cef7bac127b9ce7f7fe6c49a7
+
+落实用户对 AI Comment 模型详情的五维要求：厂牌、确切版本、规模/型号档位、推理级别、用户是否选择加速。当前系统只可核实 Codex / GPT 家族；运行环境没有提供确切模型版本、型号档位、推理级别或用户加速选择，四项均为 UNKNOWN，不根据响应速度或服务优先级猜测。历史执行参数无法重新核实，因此本轮既有缺项标题仅补全 UNKNOWN 五维，原时间、Agent、正文、来源与记录事实保留。
+
+原缺项标题：`20261028-051201_Codex`, `20261028-051717_Codex`, `20261028-061441_Codex`。
+
+仅修正规范、模板说明与本次适配记录，保留人工 Comment 规则。上列记录更新前已存在的实际提交；本提交自身 SHA 留待下一次实际 Issue 更新，不为自引用额外追加提交。只做文档、YAML、标题与 diff 检查，未做业务构建或视觉验收。
+
+> [本次规范修订需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
