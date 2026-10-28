@@ -1,22 +1,23 @@
 ---
-uid: "00001"
+uid: '00001'
 type: DOC
 status: done
 importance: p0
 emergency: p0
-updated-time: "2026-10-28T05:17:17+00:00"
-created-time: "2026-10-28T05:12:01+00:00"
-start-time:
-closed-time: "2026-10-28T05:17:17+00:00"
-created-version:
-closed-version:
-estimated-workhour:
-actual-workhour:
+updated-time: '2026-10-28T06:14:41.555810+00:00'
+created-time: '2026-10-28T05:12:01+00:00'
+start-time: null
+closed-time: '2026-10-28T05:17:17+00:00'
+created-version: null
+closed-version: null
+estimated-workhour: null
+actual-workhour: null
 commit-related:
-  - "f8c17ae124a79a857bb7b2b8d55b5819338a128c"
+- f8c17ae124a79a857bb7b2b8d55b5819338a128c
+- 070c03b565a24fecdb587b3e9890bddb458d7629
 tags:
-  - agent-template
-  - collaboration
+- agent-template
+- collaboration
 ---
 # Description
 
@@ -35,7 +36,7 @@ tags:
 - [x] 完成源规则、三份模板及本 Issue 的最终一致性检查并提交。
 - [x] 将本次记录前已产生的真实适配提交完整 hash 录入 commit-related 和对应 Comment。
 
-本 Issue 只覆盖源仓库。本轮跨仓库首批写入仍受此前审批拒绝限制，其他工作副本及 13 个未检出分支未推广；my-issue/main 的 merge、第三方、生成及 demo 副本保持不动。
+本 Issue 的实现范围仍只覆盖源仓库。后续用户明确授权全库刷新并推送，跨仓库文档写入与正常推送的审批复核已通过；现有工作副本的适配由各项目对应 Issue 记录。13 个未检出本地分支未更新；my-issue/main 的 merge、第三方、生成及 demo 副本保持不动。
 
 commit-related 记录填写时已存在的相关提交；后续记录提交自身的 hash 延至下一次实际 Issue 更新补入，不为追写自身 hash 继续制造提交链。
 
@@ -60,3 +61,13 @@ commit-related 记录填写时已存在的相关提交；后续记录提交自�
 执行环境未提供完整模型标识，未补造 Model-Detail。
 
 > [本次规范适配需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
+
+## 20261028-061441_Codex
+
+> 070c03b565a24fecdb587b3e9890bddb458d7629
+
+用户明确恢复全库规范刷新及推送后，源仓库的 f8c17ae124a79a857bb7b2b8d55b5819338a128c 与上述记录提交已普通推送，origin/main 读回为上述完整 SHA。该后续执行纠正 Description 中此前全库推广受阻的过期事实，并将已存在的记录提交反向补入 commit-related；不更改源规则、模板或历史 Comments。各项目的适配和剩余边界在各自 Issue 及推广报告中分别记录，不能将源范围完成理解为全部分支完成。
+
+本条记录提交自身的 SHA 仍留待下一次实际更新补入；未运行 GUI、引擎或业务构建验收，模型详情未提供。
+
+> [本次规范刷新需求与执行对话](codex://threads/01a172bc-a59e-74ad-9553-ff4370c9a0f0)
