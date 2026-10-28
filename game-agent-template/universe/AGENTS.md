@@ -1,6 +1,6 @@
 # Universe 协作规范
 
-版本：v1.1.2-261024-155433
+版本：v1.1.3-261028-035242
 
 本文件是 `universe/` 目录的 Agent 子规则，用于指导 Agent 如何维护本目录下的剧本、世界观、故事、Wiki 和叙事设计资产。
 
@@ -48,7 +48,7 @@ Agent 执行任务前应按以下顺序阅读上下文：
 ### 0.4 Issue 与检查边界
 
 - Universe 任务共用当前游戏工作副本根的 [`issue/`](../issue/)，按上层 [Issue 维护标准](../AGENTS.md#issue-维护标准) 使用稳定 ID 和 16 类类型；内容任务通常使用 `CONTENT`，具体类型按实际工作决定。
-- 标准路径为 `project-name/worktree(如有)/issue/issue_任务描述.md`，按原语言命名且不带版本编号；类型只记在 frontmatter。Git / P4 编号记录在对应 Comment 中，可涉及多个 change；`recorded-version` 仅为可选的内容发布版本。
+- 标准路径为 `project-name/worktree(如有)/issue/issue_任务描述.md`，按原语言命名且不带版本编号；类型只记在 frontmatter。Git / P4 编号在对应 Comment 首部以 `>` 引用，并汇总到 `commit-related` 列表；该条末尾以 `>` 引用真实会话链接。已有 `recorded-version` 等扩展数据保留，不再作为新版默认属性。
 - Issue 使用 frontmatter，正文仅有 `# Description` 和 `# Comments` 两个一级标题；Description 维护当前范围、事实和状态，Comments 按父级规定的二级标题与时间格式追加。故事、设定与脚本文件维护内容本身，不承载平行任务日志。实现、内容一致性检查和用户创作 / 游戏验收分别记录，不能用部分完成勾完整项。
 - 只对相关文本、双链、结构和受影响引用做必要检查，优先 Headless；视觉、交互、演出与大量自动化验收由用户负责。工具门槛继承上层 Blender / UE Blueprint / Rider / Godot 规则，不因文字整理而检查无关 MCP。
 - 旧日志模板保存在 [停用档案](archive/retired-workflow/README.md)，不再创建 `agent-log/`、`REQUIREMENTS.md` 或独立的 universe 任务目录；不为对齐目录补空文档。

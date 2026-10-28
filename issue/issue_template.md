@@ -29,7 +29,13 @@ Description 内描述具体对象、要实现的行为、范围与当前阻塞�
 
 我们预定义了一些属性条目，但自然的，像 obsidian 一样，这些内容可以添加；template 中使用的这些就是默认的属性
 
-`recorded-version` 是可选属性，记录实际与该 issue 有关的内容发布版本，不一定存在；它不是 Git / P4 编号。
+`uid` 是仓库内唯一的五位十进制字符串，保留前导零；同一 Git common repository 的分支和 worktree 共用命名域，旧 id 与已有扩展属性保留。
+
+提交消息的 Summary 不放编号，Detail 正常描述；末尾空一行后统一使用单行 `Issues: issue-00001, issue-00007`，只有一个也写 `Issues: issue-00001`。相关 UID 去重，以逗号加空格分隔；同一 Issue 可关联多次提交，一次提交也可关联多个 Issue。Git 只解析 trailer 的键和值，UID 列表由本规范约定，不创建或移动原生 Git tag，也不是给 issue.md 文件加标签。
+
+`commit-related` 以列表反向记录已存在的真实完整 Git commit hash / P4 changelist；记录提交自身的 hash 留待下一次实际更新补入，不为自引用无限追加提交。
+
+旧文档中的 `recorded-version` 只作为兼容扩展保留已有内容发布版本数据，不再列为新版默认属性；它不是 Git / P4 编号。
 
 # Comments
 
