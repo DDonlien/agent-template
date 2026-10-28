@@ -1,11 +1,18 @@
 ---
+uid:
 type: template
 status: active
 importance: p0
 emergency: p0
 updated-time: 2026-10-24T01:01:00
 created-time: 2026-10-24T01:01:00
-recorded-version:
+start-time: 2026-10-24T01:01:00
+closed-time: 2026-10-24T01:01:00
+created-version:
+closed-version:
+estimated-workhour:
+actual-workhour:
+commit-related:
 tags:
 ---
 # Description
@@ -28,6 +35,10 @@ Description 内描述具体对象、要实现的行为、范围与当前阻塞�
 
 ## YYYYMMDD-HHMMSS_Name_Model-Detail
 
+> commit-no.
+
+每一段具体的 comments 如果涉及一次 commit，则应该在开始位置以Obsidian引用格式记录commit-no.，支持git或perforce。commit No 也应该以列表形式记录到属性里
+
 每一条 comment 在记录时用二级标题记录，标题固定为上述格式，其回复时间在标题里已经自然记录。
 
 自然，如果是人类用户，则不存在 Model-Detail 的部分；
@@ -42,5 +53,6 @@ Name 在 AI 自行填写的情况下应该被记录为具体执行该任务的 A
 
 对于涉及具体执行的 AGENT 对话的内容，应该在最后一行附上对应的 link，至少在对应版本的 myIssue 插件中，这个 link 应该点击后可以转跳到对应对话。这个 link 建议使用对应 agent 的标准格式，比如 ChatGPT desktop 就有内置的对话格式点击可以直接转跳到对话，其他 HARNESS 框架（如 DSH）也是同理。
 
-每一段具体的 comments 最后应该记录深度链接(假设 chat 的影响会录入 issue，如果会，改链接即可)，形如：
-[对话内容](codex://threads/01a10755-9102-7291-8df2-539c0de8d4be)
+每一段具体的 comments 最后应该用Obsidian引用格式记录深度链接(假设 chat 的影响会录入 issue，如果会，改链接即可)，形如：
+
+> [对话内容](codex://threads/01a10755-9102-7291-8df2-539c0de8d4be)
