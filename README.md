@@ -19,4 +19,8 @@
 
 旧需求与执行日志保留在 [停用档案](archive/retired-workflow/README.md)，不再用于新任务。Issue 使用 frontmatter 和 Description / Comments 两个一级正文标题；Description 维护当前事实，Comments 按规定二级标题追加历史；16 类类型保留原含义，见 [Issue 类型](app-agent-template/AGENTS.md#issue-类型)。
 
+Issue 名称与文件名描述真实交付物或功能。绑定飞书后，新 Issue 默认进入同一任务表，完整 Comments 对应“最新进展记录”一格；创建人、修改人和产品版本的写法见模板 AGENTS.md。Codex 用户全局规则位于 `/Users/taobe/.codex/AGENTS.md`。
+
 Godot 项目默认使用 Godot .NET / C#，包括自有运行脚本、编辑器工具、Godot 导入脚本和自动测试；只有用户明确特别要求才使用其他脚本语言。规则见 App / Game 模板的 Godot 小节。Godot 入口固定为 `project.godot`，显示名称和 C# 工程 / 解决方案按实际项目命名。
+
+实际执行并记录 Issue 时，本地 assignees 只追加已核实的 GitHub/Gitea 平台账号，created-by / updated-by 使用对应用户；绑定飞书后，执行人保留原有成员并追加对应飞书用户。标准细则见 App / Game 的“执行人与平台身份”，不会因新建待办或同步字段而自动认领任务。

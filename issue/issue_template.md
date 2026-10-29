@@ -5,7 +5,9 @@ status: active
 importance: p0
 emergency: p0
 updated-time: 2026-10-24T01:01:00
+updated-by:
 created-time: 2026-10-24T01:01:00
+created-by:
 start-time: 2026-10-24T01:01:00
 closed-time: 2026-10-24T01:01:00
 created-version:
@@ -13,6 +15,10 @@ closed-version:
 estimated-workhour:
 actual-workhour:
 commit-related:
+parent-issue: []
+feishu-record-id:
+feishu-record-url:
+assignees: []
 tags:
 ---
 # Description
@@ -39,8 +45,17 @@ Description 内描述具体对象、要实现的行为、范围与当前阻塞�
 
 旧文档中的 `recorded-version` 只作为兼容扩展保留已有内容发布版本数据，不再列为新版默认属性；它不是 Git / P4 编号。
 
-# Comments
+名称写交付物或功能（如 GameplayHUD），不写组织、统一或准备步骤。父子任务均须有真实产出。已绑定飞书的项目，新 Issue 默认同步同一任务表并保存记录 ID / 链接；完整 Comments 同步到“最新进展记录”一格。created-by / updated-by 使用已核实的 GitHub/Gitea 平台账号，执行人 assignees 只追加；未知历史身份不回填，飞书创建/修改人列保留内置人员类型。版本使用实际产品版本，不编造版本号或排期。
 
+`parent-issue` 使用同仓库 UID 列表；无父任务时为空。`feishu-record-id`、`feishu-record-url` 仅在项目已有绑定且实际同步成功时填写；未绑定时留空，不据此另建表格。
+
+## 人员记录
+
+`assignees` 是本地 Issue 的执行人账号列表，实际执行并记录任务时按已核实身份去重追加，保留其他执行人；未开工任务不因代建或同步而自动认领。`created-by`、`updated-by` 分别记录有依据的创建/修改用户，采用当前 GitHub/Gitea 的 `<host>/<login>`，不填 Agent 名称或用当前用户回填未知历史作者。已有创建人不因后续执行更换。Agent 与模型继续写入 Comments。
+
+绑定飞书后，先读该记录当前“执行人”，保留已有用户并仅追加对应的、已核实的飞书用户；身份或权限不明时记为待处理。飞书内置创建人/修改人不手动改写，也不作为本地历史作者的回填来源。完整规则见当前仓库 AGENTS.md 的“执行人与平台身份”。
+
+# Comments
 ## YYYYMMDD-HHMMSS_Name_Model-Detail
 
 > commit-no.

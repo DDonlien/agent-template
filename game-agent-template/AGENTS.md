@@ -1,7 +1,7 @@
 ---
 target-repo-type: game
 language: zh-CN
-version: "v2.1.1-261029-201458"
+version: "v2.1.2-261029-220831"
 source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-template/AGENTS.md"
 ---
 
@@ -27,6 +27,26 @@ source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-templat
 6. 再次执行时发现用户在对话外修改了 Issue、表格或上下文，优先吸收可确认的最新人工修正，更新相关本地事实及双向关联；不拿本地旧值覆盖人工新值。多参与者协作保留来源、可得的时间与有意义变更摘要，不改写无关记录或抹去历史。
 7. 只有明显逻辑冲突、关键歧义或权限不足才暂停受影响步骤，说明具体对象、差异和所需信息；继续独立可做部分。普通匹配、字段同步和任务层级判断不反复确认。无法读取最新权威记录时，不凭旧缓存猜测依赖它的需求。
 8. 本条不绕过平台权限或扩大外部操作授权；仅处理当前任务及明确关联记录。未完成的同步如实说明，不能把已改本地 Issue、只读查询或准备工作说成外部同步成功。
+
+## Issue 名称、层级与飞书同步
+
+1. Issue 名称说明交付后是什么：真实功能、内容、文件或可识别的问题。优先用简短、自然的名词短语，如“GameplayHUD”“单体模式控制器”“LEVEL 1 关卡场景布局”。不把“建立、组织、统一、准备、完善、收敛”等过程词当标题，也不把内部类名或方法名堆成标题。实现方式放 Description；标题、Issue 文件名和飞书任务名保持同一含义。改名保留 UID、记录 ID 和历史，更新受影响的引用。
+2. 父任务和子任务都必须是真实功能或交付物。按功能组成逐级拆分，例如“角色控制 → 单体模式控制器 → 行走与跳跃”；层数由内容决定。不为分组建立“00 汇总”“组织任务”“性能测试与交付”等空壳任务，也不把类型、阶段、版本或检查步骤伪装成父任务。归属与前置依赖分别记录，父子预算不重复相加。
+3. 没有独立产出的事务、内部重构步骤、统一接口、准备工作和验收步骤，合入对应功能或版本的说明、验收或 Comments，不单独建 Issue；不能靠补上“方案、清单、报告”等词虚构交付物。必须独立追踪、又确实无法以产出命名的发行操作，才保留动作名称，例如“上传 Steam”。真实需要交付的文件或试玩包可按文件或产物命名。
+4. 项目已绑定飞书表格时，在 AGENTS.md 记明实际 Base / Table 和同步约定，并在对应 Issue 保存 feishu-record-id、feishu-record-url。已有 Issue 绑定后，后续新 Issue 默认进入同一任务表；先用仓库 UID 查重，沿用记录与人工修改。只有用户明确指定其他去向或明确不入表时例外；无法同步时写明待同步，不能声称已写入。
+5. Issue 的整个 Comments 正文对应飞书“最新进展记录”一格：保留全部历史、时间、作者、模型说明及引用，不只截取最后一条，也不另建重复 Comments 列。同步前读两端最新内容；有独有的人工记录时先保留并合并，再同步，不能用旧快照覆盖。单格容量或权限不支持全文时报告具体限制，不静默截断。
+6. 飞书创建人/修改人继续使用只读的内置 created_by / updated_by，仅表示表格记录操作者。本地 Issue 的 created-by、updated-by 与 assignees 使用有依据的 GitHub/Gitea 平台账号，不从飞书记录元数据回填历史作者；执行 Agent 仍记在 Comment。执行人只追加及跨平台身份对应见“执行人与平台身份”。
+7. 记录版本与发布版本使用项目版本计划中的真实产品版本。记录版本表示任务在哪个版本记入，发布版本表示计划交付或实际交付的版本；发布状态未完成时不能宣称已发布。不得用日期基线、任务名称或里程碑冒充版本，也不替用户猜版本号、日期或分配。沿用用户当前字段类型、关联方向和人工值，不擅自恢复其删掉的反向列；实际关闭版本只在有完成依据时填写。
+8. 用户删除或明确不要的字段就实际删除，不以隐藏代替，也不换个同义名字重建。调整前读取当前 Schema、公式和人工配置；受影响公式按现有字段修正，不为公式恢复已删除列。未经要求不隐藏字段；用户自行隐藏的配置按其当前意图保留。
+9. 用读者熟悉的词描述当前功能和行为，避免“闭环、底座、收敛、契约、消费”等行话堆叠；必要术语首次说明用途。可参考 Humanizer-zh / Humanizer 或项目实际写作样本，但不套用其示例中的事实，不添进度、性能结论或验收结果。
+
+## 执行人与平台身份
+
+1. AI 代表用户实际执行任务，且已在对应 Issue 记录时，登记本次执行用户。只查看、规划拆解、代建未开工任务或同步字段，不据此认领这些功能；规划、文档维护本身是实际任务时，在其对应 Issue 登记，不批量认领整张待办表。
+2. 本地 Issue 的 `assignees` 使用账号列表，`created-by`、`updated-by` 使用单个账号。账号取自当前仓库对应 GitHub / Gitea 平台已核实的用户，以 `<host>/<login>` 记录，避免跨站同名；不以组织名、远端仓库所有者、`git user.name`、飞书显示名或 AI 名称冒充平台用户。新建 Issue 填写有依据的创建人，实际更新时填写修改人；执行人按已确认的平台身份去重并追加，保留其他执行人。已有创建人不因后续执行而更换；历史身份仅在能确认同一账号时规范表示，缺少依据不回填当前用户。实际 Agent 与模型仍记录在 Comments。
+3. Issue 已绑定飞书任务时，先读取该记录当前“执行人”，把经过核实的对应飞书用户追加进去：保留全部已有成员与顺序，仅新增缺少的用户，不把执行人数组替换为当前用户一人。写后读回确认；遇到并发新增成员时重新合并。仅追加成功或已存在才记为已同步。字段容量、权限或身份映射不支持追加时，保留原值、记录具体待处理原因，继续独立工作。
+4. GitHub / Gitea 账号与飞书用户通过已验证的当前服务身份或项目明确映射对应；同名、组织归属和历史记录操作者本身不足以证明是同一人。飞书“创建人/修改人”继续使用只读的内置 `created_by` / `updated_by`，不手动伪造，也不将其回填为本地 Issue 的历史作者。本地人员使用平台账号，飞书“执行人”使用飞书用户 ID，各自保留正确身份域。
+5. `assignees: []` 纳入 Issue 标准模板，新增人员属性放在 `tags` 之前；保留已有属性、UID、记录 ID、人工分工与全部历史。本规范不要求新建飞书表、恢复已删除字段、启用原生 GitHub/Gitea Issue 或批量改写历史人员。没有外部绑定时只维护本地 Issue；确需绑定而暂时不能同步时如实记录待处理。
 
 ## 代码与改动范围
 
@@ -78,8 +98,8 @@ source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-templat
 
 1. 本地活动 Issue 记录写入当前工作副本的 `issue/`；是否需要 Issue 按“任务分类与追踪协作”判断。项目明确配置的外部 tracker 按其既有分工维护，并与 Issue 双向关联。标准路径为 `project-name/worktree(如有)/issue/issue_任务描述.md`；没有 worktree 时为 `project-name/issue/...`。`worktree(如有)` 表示已有实际工作区，不要求目录字面名为 `worktree`。
 2. 属性统一使用兼容 Obsidian 的 YAML frontmatter，可在模板默认属性上扩展。保留已有 `uid`、`id`、类型、拆分关联及 `parent` 等关系；不因新增 UID 改写旧编号、文件名或引用目标。UID 为仓库内唯一的五位十进制字符串，保留前导零；同一 Git common repository 的分支和 worktree 统一查重，不使用跨仓库共享编号池。
-3. 文件名只用原语言的具体任务描述；类型只在 frontmatter 中记录，不加任何版本编号后缀。具体命名与版本记录见下文“Issue 文件命名与版本关联”。
-4. `issue/issue_template.md` 是唯一模板文件，`type: template` 表示模板身份。新版默认属性为 `uid`、`type`、`status`、`importance`、`emergency`、`updated-time`、`created-time`、`start-time`、`closed-time`、`created-version`、`closed-version`、`estimated-workhour`、`actual-workhour`、`commit-related`、`tags`。正文仅有 `# Description` 和 `# Comments` 两个一级标题，不为格式补空内容；已有扩展属性继续保留。
+3. 文件名用原语言的真实交付物、功能或问题名称；类型只在 frontmatter 中记录，不加任何版本编号后缀。具体命名与版本记录见下文“Issue 文件命名与版本关联”。
+4. `issue/issue_template.md` 是唯一模板文件，`type: template` 表示模板身份。新版默认属性为 `uid`、`type`、`status`、`importance`、`emergency`、`updated-time`、`updated-by`、`created-time`、`created-by`、`start-time`、`closed-time`、`created-version`、`closed-version`、`estimated-workhour`、`actual-workhour`、`commit-related`、`assignees`、`tags`。正文仅有 `# Description` 和 `# Comments` 两个一级标题，不为格式补空内容；已有扩展属性继续保留。
 5. 按“任务分类与追踪协作”判断：功能性任务必须有最具体的 Issue，自动复用、修改或判断新任务 / 子任务；事务性按项目记录约定处理，不为普通追踪判断反复确认。这不授权额外创建分支或 worktree。
 6. `Description` 维护具体对象、目标行为、范围、当前事实与阻塞；属性记在 frontmatter。可使用 Markdown 原生语法、子标题、列表、checkbox 和行内图片；子分组只作为 Description 内容渲染，不新增 myIssue 专用分组。实现、检查与用户验收按实际需要表达。
 7. `# Comments` 只追加。每条 Comment 用二级标题 `## YYYYMMDD-HHMMSS_Name_Model-Detail`，人类记录省略 Model-Detail；AI 的 Name 是实际执行 Agent；Model-Detail 必须按“厂牌-确切版本-规模/型号档位-推理级别-是否选择加速模式”记录五个维度，例如 `GPT-6.1-SOL-MAX-FAST`，不能用 `GPT`、`GPT-6` 或系列名代替确切版本。仅在有可验证执行元信息时填写；加速维度明确用 `FAST`、`NONFAST`（已核实未选择加速）或 `UNKNOWN`，不得把响应速度、订阅档位、服务优先级当作选择了加速。每个未知维度写 `UNKNOWN` 并在正文说明不可核实，不以当前配置回填历史参数。每次任务执行完成后记录，标题时间为实际记录时间。涉及提交时，在该条开头用 Obsidian 引用格式 `>` 记录真实 Git commit hash / P4 changelist，并汇总到 `commit-related` 列表；同一 Issue 可涉及多个 change。该条末尾用 `>` 引用有来源依据的真实会话深度链接。行内图片使用 `issue/attachment`。Description 维护当前事实，历史 Comment 与来源保留；时间、Agent、模型、提交或原会话无法追溯时说明缺失，不补造，不照抄模板示例，也不把文档迁移对话冒充业务执行对话。
@@ -91,7 +111,7 @@ source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-templat
 
 ## Issue 文件命名与版本关联
 
-1. 活动文件采用 `issue_任务描述.md`，不带任何版本编号后缀。任务描述按源语言如实、连贯记录，中文不翻译，英文词用连字符；说明具体对象与动作 / 目标，不能只写 search、storage 等主题桶。文件名不放类型或旧 A-001 等编号；类型和旧稳定 ID 只留在 frontmatter，类型沿用下节 16 类含义。
+1. 活动文件采用 `issue_产出或功能名称.md`，不带任何版本编号后缀。名称按源语言如实、连贯记录，中文不翻译，英文词用连字符；说明交付物、具体功能或可识别的问题，不用操作步骤和空泛主题桶代替产出。文件名不放类型或旧 A-001 等编号；类型和旧稳定 ID 只留在 frontmatter，类型沿用下节 16 类含义。
 2. 同一文件混装多个可独立实施 / 交付的目标时，按实际任务拆分并保留原 ID、来源、历史与真实状态。属于同一目标的实现细节、依赖和验收子项留在该任务内，不机械地逐 checkbox、逐日志创建文件。语义重名时用具体对象、范围或动作消歧，不恢复无意义编号。
 3. 对应执行涉及的 Git commit hash / P4 changelist 在该条 Comment 首部以 `>` 引用，并保存到 `commit-related` 列表，可涉及多个 change；不使用 `controlled-version` 等单值属性代替多次提交关联，也不写入文件名。只记录有依据的关联，不拿当前 HEAD、需求快照或文档整理提交冒充业务实施提交。
 4. 新版保留 `created-version`、`closed-version`、`start-time`、`closed-time`、`estimated-workhour`、`actual-workhour` 字段；未知值留空，不从模板示例日期、Git 时间或历史日志猜填版本、实际时间和工时。已有 `recorded-version` 数据作为兼容扩展保留，不放回新版默认属性，也不自动转换为新版本字段。`completed-time` 与 `closed-time` 不视为同义字段；保留既有 `completed-time`、`parent`、`id` 等扩展和引用。
