@@ -18,3 +18,5 @@
 先阅读 [`AGENTS.md`](AGENTS.md)。通用规则同时更新 App / Game，活动维护记录见 [`issue/`](issue/)；普通项目任务不自动升级模板，也不自动提交。
 
 旧需求与执行日志保留在 [停用档案](archive/retired-workflow/README.md)，不再用于新任务。Issue 使用 frontmatter 和 Description / Comments 两个一级正文标题；Description 维护当前事实，Comments 按规定二级标题追加历史；16 类类型保留原含义，见 [Issue 类型](app-agent-template/AGENTS.md#issue-类型)。
+
+Godot 项目默认使用 Godot .NET / C#，包括自有运行脚本、编辑器工具、Godot 导入脚本和自动测试；只有用户明确特别要求才使用其他脚本语言。规则见 App / Game 模板的 Godot 小节。Godot 入口固定为 `project.godot`，显示名称和 C# 工程 / 解决方案按实际项目命名。

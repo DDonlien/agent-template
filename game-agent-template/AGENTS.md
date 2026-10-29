@@ -1,7 +1,7 @@
 ---
 target-repo-type: game
 language: zh-CN
-version: "v2.0.7-261028-081750"
+version: "v2.1.1-261029-201458"
 source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-template/AGENTS.md"
 ---
 
@@ -187,8 +187,10 @@ source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-templat
 
 ## Godot
 
-1. 代码、配置和可文本维护的资源优先直接编辑；检查优先使用项目实际 Godot 版本与既有 Headless 入口，例如 `godot --headless --path <project-path> ...`，示例不代表固定命令或要求执行整套验收。
-2. Headless 无法覆盖的图形、输入、音频或渲染结果标为待用户验收。遇到具体工具限制时报告原因，不预设所有 Godot 工作依赖 MCP。
+1. 使用 Godot 的项目，除非用户明确特别要求其他语言，否则项目自有的运行逻辑、编辑器工具、Godot 导入与生成脚本、自动测试一律使用 C#，并使用 Godot .NET。不得因原型、首阶段或实现便利自行改用 GDScript。第三方依赖与参考原件保留上游语言；`.gdshader` 着色器和 `.godot`、`.tscn`、`.tres` 等原生资源及配置继续使用引擎格式。
+2. 代码、配置和可文本维护的资源优先直接编辑；检查优先使用项目实际 Godot 版本与既有 Headless 入口，例如 `godot --headless --path <project-path> ...`，示例不代表固定命令或要求执行整套验收。
+3. Headless 无法覆盖的图形、输入、音频或渲染结果标为待用户验收。遇到具体工具限制时报告原因，不预设所有 Godot 工作依赖 MCP。
+4. Godot 引擎入口保留固定文件名 `project.godot`；实际项目名通过 `application/config/name` 设置，C# 工程与解决方案使用对应项目名称。不以自定义名称的 `.godot` 副本代替入口，也不维护重复配置。
 
 ## Blender
 
