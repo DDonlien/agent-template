@@ -1,7 +1,7 @@
 ---
 target-repo-type: app
 language: zh-CN
-version: "v2.1.2-261029-220831"
+version: "v2.1.4-261102-001540"
 source: "https://github.com/DDonlien/agent-template/blob/main/app-agent-template/AGENTS.md"
 ---
 
@@ -36,7 +36,7 @@ source: "https://github.com/DDonlien/agent-template/blob/main/app-agent-template
 4. 项目已绑定飞书表格时，在 AGENTS.md 记明实际 Base / Table 和同步约定，并在对应 Issue 保存 feishu-record-id、feishu-record-url。已有 Issue 绑定后，后续新 Issue 默认进入同一任务表；先用仓库 UID 查重，沿用记录与人工修改。只有用户明确指定其他去向或明确不入表时例外；无法同步时写明待同步，不能声称已写入。
 5. Issue 的整个 Comments 正文对应飞书“最新进展记录”一格：保留全部历史、时间、作者、模型说明及引用，不只截取最后一条，也不另建重复 Comments 列。同步前读两端最新内容；有独有的人工记录时先保留并合并，再同步，不能用旧快照覆盖。单格容量或权限不支持全文时报告具体限制，不静默截断。
 6. 飞书创建人/修改人继续使用只读的内置 created_by / updated_by，仅表示表格记录操作者。本地 Issue 的 created-by、updated-by 与 assignees 使用有依据的 GitHub/Gitea 平台账号，不从飞书记录元数据回填历史作者；执行 Agent 仍记在 Comment。执行人只追加及跨平台身份对应见“执行人与平台身份”。
-7. 记录版本与发布版本使用项目版本计划中的真实产品版本。记录版本表示任务在哪个版本记入，发布版本表示计划交付或实际交付的版本；发布状态未完成时不能宣称已发布。不得用日期基线、任务名称或里程碑冒充版本，也不替用户猜版本号、日期或分配。沿用用户当前字段类型、关联方向和人工值，不擅自恢复其删掉的反向列；实际关闭版本只在有完成依据时填写。
+7. 记录版本与发布版本使用项目版本计划中的真实产品版本。有飞书任务表对应时，记录版本取最近一个已发布版本，发布版本取最近一个制作中版本；无飞书对应时按项目实际约定填写，具体见“Issue 记录内容、版本与来源”。发布状态未完成时不能宣称已发布。不得用日期基线、任务名称或里程碑冒充版本，也不替用户猜版本号、日期或分配。沿用用户当前字段类型、关联方向和人工值，不擅自恢复其删掉的反向列；实际关闭版本只在有完成依据时填写。
 8. 用户删除或明确不要的字段就实际删除，不以隐藏代替，也不换个同义名字重建。调整前读取当前 Schema、公式和人工配置；受影响公式按现有字段修正，不为公式恢复已删除列。未经要求不隐藏字段；用户自行隐藏的配置按其当前意图保留。
 9. 用读者熟悉的词描述当前功能和行为，避免“闭环、底座、收敛、契约、消费”等行话堆叠；必要术语首次说明用途。可参考 Humanizer-zh / Humanizer 或项目实际写作样本，但不套用其示例中的事实，不添进度、性能结论或验收结果。
 
@@ -96,22 +96,33 @@ source: "https://github.com/DDonlien/agent-template/blob/main/app-agent-template
 
 ## Issue 维护标准
 
-1. 本地活动 Issue 记录写入当前工作副本的 `issue/`；是否需要 Issue 按“任务分类与追踪协作”判断。项目明确配置的外部 tracker 按其既有分工维护，并与 Issue 双向关联。标准路径为 `project-name/worktree(如有)/issue/issue_任务描述.md`；没有 worktree 时为 `project-name/issue/...`。`worktree(如有)` 表示已有实际工作区，不要求目录字面名为 `worktree`。
-2. 属性统一使用兼容 Obsidian 的 YAML frontmatter，可在模板默认属性上扩展。保留已有 `uid`、`id`、类型、拆分关联及 `parent` 等关系；不因新增 UID 改写旧编号、文件名或引用目标。UID 为仓库内唯一的五位十进制字符串，保留前导零；同一 Git common repository 的分支和 worktree 统一查重，不使用跨仓库共享编号池。
+1. 本地活动 Issue 记录写入当前工作副本的 `issue/`；是否需要 Issue 按“任务分类与追踪协作”判断。项目明确配置的外部 tracker 按其既有分工维护，并与 Issue 双向关联。标准路径为 `project-name/worktree(如有)/issue/issue-00001_任务描述.md`；没有 worktree 时为 `project-name/issue/...`。`worktree(如有)` 表示已有实际工作区，不要求目录字面名为 `worktree`。
+2. 属性统一使用兼容 Obsidian 的 YAML frontmatter，可在模板默认属性上扩展。保留已有 `uid`、`id`、类型、拆分关联及 `parent` 等关系；规范文件名时沿用原 UID 与旧编号，只更新路径和受影响引用，不重新编号。UID 为仓库内唯一的五位十进制字符串，保留前导零；同一 Git common repository 的分支和 worktree 统一查重，不使用跨仓库共享编号池。
 3. 文件名用原语言的真实交付物、功能或问题名称；类型只在 frontmatter 中记录，不加任何版本编号后缀。具体命名与版本记录见下文“Issue 文件命名与版本关联”。
 4. `issue/issue_template.md` 是唯一模板文件，`type: template` 表示模板身份。新版默认属性为 `uid`、`type`、`status`、`importance`、`emergency`、`updated-time`、`updated-by`、`created-time`、`created-by`、`start-time`、`closed-time`、`created-version`、`closed-version`、`estimated-workhour`、`actual-workhour`、`commit-related`、`assignees`、`tags`。正文仅有 `# Description` 和 `# Comments` 两个一级标题，不为格式补空内容；已有扩展属性继续保留。
 5. 按“任务分类与追踪协作”判断：功能性任务必须有最具体的 Issue，自动复用、修改或判断新任务 / 子任务；事务性按项目记录约定处理，不为普通追踪判断反复确认。这不授权额外创建分支或 worktree。
 6. `Description` 维护具体对象、目标行为、范围、当前事实与阻塞；属性记在 frontmatter。可使用 Markdown 原生语法、子标题、列表、checkbox 和行内图片；子分组只作为 Description 内容渲染，不新增 myIssue 专用分组。实现、检查与用户验收按实际需要表达。
-7. `# Comments` 只追加。每条 Comment 用二级标题 `## YYYYMMDD-HHMMSS_Name_Model-Detail`，人类记录省略 Model-Detail；AI 的 Name 是实际执行 Agent；Model-Detail 必须按“厂牌-确切版本-规模/型号档位-推理级别-是否选择加速模式”记录五个维度，例如 `GPT-6.1-SOL-MAX-FAST`，不能用 `GPT`、`GPT-6` 或系列名代替确切版本。仅在有可验证执行元信息时填写；加速维度明确用 `FAST`、`NONFAST`（已核实未选择加速）或 `UNKNOWN`，不得把响应速度、订阅档位、服务优先级当作选择了加速。每个未知维度写 `UNKNOWN` 并在正文说明不可核实，不以当前配置回填历史参数。每次任务执行完成后记录，标题时间为实际记录时间。涉及提交时，在该条开头用 Obsidian 引用格式 `>` 记录真实 Git commit hash / P4 changelist，并汇总到 `commit-related` 列表；同一 Issue 可涉及多个 change。该条末尾用 `>` 引用有来源依据的真实会话深度链接。行内图片使用 `issue/attachment`。Description 维护当前事实，历史 Comment 与来源保留；时间、Agent、模型、提交或原会话无法追溯时说明缺失，不补造，不照抄模板示例，也不把文档迁移对话冒充业务执行对话。
+7. `# Comments` 仅新增独立记录，保留历史，按记录时间倒序排列（最新在上）。每条 Comment 用二级标题 `## YYYYMMDD-HHMMSS_Name_Model-Detail`，人类记录省略 Model-Detail；AI 的 Name 是实际执行 Agent；Model-Detail 必须按“厂牌-确切版本-规模/型号档位-推理级别-是否选择加速模式”记录五个维度，例如 `GPT-6.1-SOL-MAX-FAST`，不能用 `GPT`、`GPT-6` 或系列名代替确切版本。仅在有可验证执行元信息时填写；加速维度明确用 `FAST`、`NONFAST`（已核实未选择加速）或 `UNKNOWN`，不得把响应速度、订阅档位、服务优先级当作选择了加速。先按“Issue 记录内容、版本与来源”查询实际执行元信息；仍缺失的维度才写 `UNKNOWN`，必要说明只作简短来源备注，不在正文重复套话，不以当前配置回填历史参数。每次任务执行完成后记录，标题时间为实际记录时间。涉及提交时，在该条开头用 Obsidian 引用格式 `>` 记录真实 Git commit hash / P4 changelist，并汇总到 `commit-related` 列表；同一 Issue 可涉及多个 change。该条末尾用 `>` 引用有来源依据的真实会话深度链接。行内图片使用 `issue/attachment`。Description 维护当前事实，历史 Comment 与来源保留；时间、Agent、模型、提交或原会话无法追溯时说明缺失，不补造，不照抄模板示例，也不把文档迁移对话冒充业务执行对话。
 8. `- [ ]` 为未完成，`- [x]` 仅表示该条明确范围已完成；实现、检查、用户验收分别列项。部分子项完成不能勾完父项；待用户验收时应明确保留该状态，不因实现或编译通过而标为整项完成。
 9. 阻塞、延后、取消使用 `#blocked`、`#deferred`、`#cut` 并写清原因；取消条目保留，不静默删除。未执行的检查保持未完成，确实不适用时说明理由。
 10. 具体测试是所属功能 Issue 的子项，可沿用 `<parent>-test` ID。QA 仍是有效类型；不要只为宣布阶段完成而制造独立 QA、验证或完成定义 Issue。Phase、工作线和父子关系按实际需要记录，不再依赖 branch 标题组织任务。
 11. 更新 Issue 时精准修改相关 Description、属性和对应 Comments，不为整理格式批量改写无关历史、删除或重编号既有 ID；不新增未经项目配置的平行需求文件或执行日志；项目明确维护的外部 tracker 保留既有分工，并按“任务分类与追踪协作”保持双向关联。
 12. 旧活动 `REQUIREMENTS.md` 与 `agent-log/` 在任务和有效证据迁入 Issue 后移除，不维护两套工作制度。保留旧 ID / 来源，完整历史可由已核实 Git 历史追溯；未跟踪或未提交的独有内容必须先保全到本次版本化来源副本。明确停用的模板档案继续只作历史，不把其中示例迁成真实任务。
 
+<!-- issue-writing-policy:20261101 -->
+## Issue 记录内容、版本与来源
+
+1. Comments 围绕可感知的实践结果书写：谁实际做了什么、遇到什么问题、得到什么成果或失败结论、下一步还需做什么。只记录已发生的尝试及其结论，不把计划写成成果，不记录 AI 的思考过程、猜测或自我说明。不写“API 身份已核实”“当前可核实 Agent 为……”“未取得链接、未补造”等例行元信息套话；身份、模型和来源按对应属性、标题与末尾引用填写，只有实际影响交付的限制才简要说明。
+2. 每组 Comment 沿用项目规定的二级标题，按标题中的记录时间倒序排列，最新记录在最上方。新记录放在 `# Comments` 后的首条位置，不写到末尾；已有记录的正文、时间、作者和来源保持不变。相邻两组之间统一使用“空行、`---`、空行”，即 `最新一条正文\n\n---\n\n## 较早一条标题`；写入前检查相邻边界，避免重复分隔线。同步飞书“最新进展记录”时保留完整 Comments、最新在上的顺序及分隔线。
+3. 已有飞书任务表对应的 Issue，填写版本前先读取实际版本计划：记录版本取最近一个已发布的版本，发布版本取最近一个制作中的版本；多个制作中版本按现有计划的发布先后选择最近项，不取最远的新版本，不自行递增或顺延版本号。没有飞书对应时，按项目实际版本来源与约定填写。缺少符合状态的版本或无法确定先后时，保留有依据的值，缺项留空并说明具体待确认项；不把制作中当作已发布。沿用现有字段与关联，保留用户明确指定的版本，不因日常追加 Comments 滚动改写历史记录版本。
+4. 写 AI Comment 前主动查询本次实际执行元信息：优先使用宿主提供的模型标识、会话工具和本地会话日志中的对应执行轮次记录（例如 `turn_context.model` / `effort`），再按“厂牌-确切版本-规模/型号档位-推理级别-加速选择”填写。不能因对话正文未显示就直接写 UNKNOWN 或声称无法核实；不得以全局默认配置回填历史。加速选择仍须明确证据，不从响应速度、订阅或服务优先级推断。查询后仍缺失的维度才写 UNKNOWN；必要说明合并为一次简短来源备注，不在每条正文重复铺陈。
+5. 每条 Comment 末尾用 `>` 引用该条实际执行聊天的深度链接。先查宿主已提供的链接或聊天工具；Codex 可用明确的 `CODEX_THREAD_ID` 定位，并核对聊天标题、工程或原始请求后使用 `codex://threads/<已核实的线程ID>`。其他宿主使用其实际支持的链接。不得凭匿名 session ID、最近聊天或模板示例猜链接，也不得把当前会话套给历史或其他 Agent 的记录；补历史来源须核对原始执行轮次。可用通道查过仍无法取得时，简短标明来源待补，继续独立工作，不反复写“未补造”。
+6. 活动 Issue 文件统一命名为 `issue-uid_title.md`，例如 `issue-00010_双人关卡镜头取景异常.md`。`uid` 是 frontmatter 中保留前导零的五位十进制字符串，文件名与属性必须一致；`title` 使用原语言的具体功能、交付物或问题名称，不加类型、版本或旧编号。唯一模板继续使用 `issue_template.md`，不填虚构 UID。现有活动 Issue 改名时沿用已有 UID，缺少 UID 则先在同一 Git common repository 的全部分支与工作区范围只读核对活动及归档记录占用的 UID，再分配，保留旧 `id` 和外部记录 ID，再修正 Markdown、Obsidian 及其他受影响引用；不重新编号已有的有效 UID，不把参考原件、历史归档或构建副本当作活动记录迁移。
+<!-- /issue-writing-policy:20261101 -->
+
 ## Issue 文件命名与版本关联
 
-1. 活动文件采用 `issue_产出或功能名称.md`，不带任何版本编号后缀。名称按源语言如实、连贯记录，中文不翻译，英文词用连字符；说明交付物、具体功能或可识别的问题，不用操作步骤和空泛主题桶代替产出。文件名不放类型或旧 A-001 等编号；类型和旧稳定 ID 只留在 frontmatter，类型沿用下节 16 类含义。
+1. 活动文件采用 `issue-00001_产出或功能名称.md`，不带任何版本编号后缀。名称按源语言如实、连贯记录，中文不翻译，英文词用连字符；说明交付物、具体功能或可识别的问题，不用操作步骤和空泛主题桶代替产出。文件名须包含五位 UID，不放类型、版本号或旧 A-001 等编号；类型和旧稳定 ID 只留在 frontmatter，类型沿用下节 16 类含义。
 2. 同一文件混装多个可独立实施 / 交付的目标时，按实际任务拆分并保留原 ID、来源、历史与真实状态。属于同一目标的实现细节、依赖和验收子项留在该任务内，不机械地逐 checkbox、逐日志创建文件。语义重名时用具体对象、范围或动作消歧，不恢复无意义编号。
 3. 对应执行涉及的 Git commit hash / P4 changelist 在该条 Comment 首部以 `>` 引用，并保存到 `commit-related` 列表，可涉及多个 change；不使用 `controlled-version` 等单值属性代替多次提交关联，也不写入文件名。只记录有依据的关联，不拿当前 HEAD、需求快照或文档整理提交冒充业务实施提交。
 4. 新版保留 `created-version`、`closed-version`、`start-time`、`closed-time`、`estimated-workhour`、`actual-workhour` 字段；未知值留空，不从模板示例日期、Git 时间或历史日志猜填版本、实际时间和工时。已有 `recorded-version` 数据作为兼容扩展保留，不放回新版默认属性，也不自动转换为新版本字段。`completed-time` 与 `closed-time` 不视为同义字段；保留既有 `completed-time`、`parent`、`id` 等扩展和引用。
@@ -147,12 +158,12 @@ source: "https://github.com/DDonlien/agent-template/blob/main/app-agent-template
    ```text
    project-name/
      issue/                     # 不使用 worktree 时
-       issue_任务描述.md
+       issue-00001_任务描述.md
    project-name/
      existing-workspace/        # 使用 worktree 时，名称遵循现有约定
        AGENTS.md
        issue/
-         issue_任务描述.md
+         issue-00001_任务描述.md
        <deliverable>/
    ```
 4. 初始化项目时选择 App 或 Game 子模板，按实际需要复制，包含适用的隐藏配置；不带入模板仓库的 `.git`、历史档案或个人 IDE 配置，不误删项目自身的 Git / CI 配置。初始化不隐含创建分支、worktree 或启用新的版本管理系统。
