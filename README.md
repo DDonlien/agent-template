@@ -1,11 +1,11 @@
 # agent-template 元模板
 
-用于初始化和维护 App / Game 项目的 Agent 协作规范。模板优先使用 Headless 工作方式，以 `issue/` 记录需求、检查和交接，区分实现完成与用户验收。
+用于初始化和维护 App 项目的 Agent 协作规范，并保留 Game 模板供备用中转。模板优先使用 Headless 工作方式，以 `issue/` 记录需求、检查和交接，区分实现完成与用户验收。
 
 ## 子模板
 
 - [App 模板](app-agent-template/AGENTS.md)：应用、网站、工具和服务项目。
-- [Game 模板](game-agent-template/AGENTS.md)：游戏项目，包含 [universe 叙事资产规则](game-agent-template/universe/AGENTS.md)。
+- [Game 备用模板](game-agent-template/AGENTS.md)及 [universe 备用规范](game-agent-template/universe/AGENTS.md)。FreshLi4 游戏规范从团队仓库 `game-home-repo` 的 `game-agent-template/AGENTS.md` 和 `game-agent-template/universe/AGENTS.md` 获取。
 
 ## 初始化项目
 
@@ -15,7 +15,7 @@
 
 ## 维护
 
-先阅读 [`AGENTS.md`](AGENTS.md)。通用规则同时更新 App / Game，活动维护记录见 [`issue/`](issue/)；普通项目任务不自动升级模板，也不自动提交。
+先阅读 [`AGENTS.md`](AGENTS.md)。App 规范在本仓库维护；Game 备用副本按明确的同步需求从 `game-home-repo` 更新。活动维护记录见 [`issue/`](issue/)。
 
 旧需求与执行日志保留在 [停用档案](archive/retired-workflow/README.md)，不再用于新任务。Issue 使用 frontmatter 和 Description / Comments 两个一级正文标题；Description 维护当前事实，Comments 按规定二级标题记录历史，最新在上；16 类类型保留原含义，见 [Issue 类型](app-agent-template/AGENTS.md#issue-类型)。
 

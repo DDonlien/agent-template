@@ -1,13 +1,13 @@
 # Agent Template 元模板协作规范
 
-版本：v2.2.4-261102-001540
+版本：v2.2.5-261119-004548
 
-本仓库维护可复制的 App / Game 协作模板，不直接作为项目模板。用户最新明确要求优先于模板和历史资料。
+本仓库维护 App 协作模板，并保留 Game 规范副本和初始化文件，供备用中转。用户最新明确要求优先于模板和历史资料。
 
 ## 适用规则与入口
 
-1. 元模板维护采用 [App 模板的通用规则](app-agent-template/AGENTS.md#通用规则)，包括最小改动、Headless、Issue、版本管理与用户验收边界；不继承其项目示例。Game 通用部分必须与 App 一致。
-2. 初始化 App 使用 [`app-agent-template/`](app-agent-template/AGENTS.md)，初始化 Game 使用 [`game-agent-template/`](game-agent-template/AGENTS.md)。`game-agent-template/universe/` 是叙事资产子目录；改动前阅读其 [局部规则](game-agent-template/universe/AGENTS.md)。
+1. 元模板维护采用 [App 模板的通用规则](app-agent-template/AGENTS.md#通用规则)，包括最小改动、Headless、Issue、版本管理与用户验收边界。
+2. 初始化 App 使用 [`app-agent-template/`](app-agent-template/AGENTS.md)。FreshLi4 游戏规范从团队仓库 `game-home-repo` 的 `game-agent-template/AGENTS.md` 和 `game-agent-template/universe/AGENTS.md` 读取。[Game 备用模板](game-agent-template/AGENTS.md)保留原规范及初始化文件。
 3. 普通项目任务不自动检查或升级远端模板。维护本仓库时只检查当前工作副本与目标改动，不自动执行远端同步；分支 / worktree 的创建、切换和重定位均须明确授权。
 4. 默认不 commit、push、创建 PR 或执行其他提交 / 发布动作；单独的每日 commit 和手动 commit 流程不提供本任务授权。
 
@@ -21,7 +21,7 @@
 
 ## 模板维护
 
-1. 通用规则只在 App / Game 的通用部分维护；修改时同步两份，保持内容一致。技术栈专用规则放在对应模板；涉及引擎或原生资产时，按 Game 的[引擎与原生资产实现原则](game-agent-template/AGENTS.md#引擎与原生资产实现原则)维护局部一致性、可编辑资产与原生能力优先，具体引擎只补必要差异。项目示例保持清晰且不强制填空。
+1. App 规则在本仓库维护。游戏规则在 `game-home-repo` 维护，Game 备用副本在明确要求同步时从该仓库更新。项目示例按适用范围维护。
 2. 根、App、Game 的 `AGENTS.md` 修改规则或元数据时递增自身语义版本，并更新 `vx.x.x-yymmdd-hhmmss` 时间戳；本次 v2.0.0 表示从旧需求 / 日志制度迁到 Issue 的协作流程变化。Universe 的局部版本独立维护。
 3. 修改结构时同步相关 README、DESIGN、Issue 和 universe 引用；用 `rg` 与 Markdown 链接 / diff 检查确认一致性。按本次范围说明实际检查，视觉和大量自动化验收由用户决定。
 4. 活动任务迁到 `issue/` 并保留旧稳定 ID。属性使用 frontmatter，正文仅有 `# Description` 和 `# Comments` 两个一级标题；Description 维护当前事实，Comments 以规定的二级标题记录，最新在上。16 类类型及完整规范以 [Issue 维护标准](app-agent-template/AGENTS.md#issue-维护标准) 和 [Issue 类型](app-agent-template/AGENTS.md#issue-类型) 为准。 AI Comment 的 Model-Detail 必须逐项记录厂牌、确切版本、规模/型号档位、推理级别和加速选择，以连字符连接，例如 `GPT-6.1-SOL-MAX-FAST`。先查询实际执行元信息，仍缺失的维度才写 `UNKNOWN`，必要说明只作简短来源备注；加速用 `FAST` / `NONFAST` / `UNKNOWN`，不根据速度、订阅或服务优先级猜测，不以系列名代替确切版本，也不回填未知历史。人工 Comment 不填模型字段。

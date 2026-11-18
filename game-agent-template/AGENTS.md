@@ -1,9 +1,11 @@
 ---
 target-repo-type: game
 language: zh-CN
-version: "v2.1.4-261102-001540"
-source: "https://github.com/DDonlien/agent-template/blob/main/game-agent-template/AGENTS.md"
+version: "v2.1.5-261119-004548"
+source: "FreshLi4/game-home-repo:game-agent-template/AGENTS.md"
 ---
+
+本文件为备用副本。FreshLi4 的游戏规范在团队仓库 `game-home-repo` 的 `game-agent-template/AGENTS.md` 维护。
 
 # 通用规则
 
